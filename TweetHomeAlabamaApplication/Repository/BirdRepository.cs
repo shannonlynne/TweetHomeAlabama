@@ -6,10 +6,10 @@ using TweetHomeAlabama.Infrastructure.DbContext;
 
 namespace TweetHomeAlabama.Infrastructure.Repository
 {
-    public class TweetHomeAlabamaRepository : ITweetHomeAlabamaRepository, IDisposable
+    public class BirdRepository : ITweetHomeAlabamaRepository, IDisposable
     {
         private TweetHomeAlabamaDataContext context;
-        public TweetHomeAlabamaRepository(TweetHomeAlabamaDataContext context)
+        public BirdRepository(TweetHomeAlabamaDataContext context)
         {
             this.context = context;
         }

@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TweetHomeAlabama.Domain.Model
+﻿namespace TweetHomeAlabama.Domain.Model
 {
-    public class Image
+    #region Properties
+    public class Image  //TODO: Is this in the right place?
     {
         public int Id { get; set; }
-        public string? ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
+        #endregion
+
+        #region Constructors
+        public Image(int id, string imageUrl)
+        {
+            Id = id;
+            ImageUrl = imageUrl;
+        }
+        #endregion
     }
 }

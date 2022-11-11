@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TweetHomeAlabama.Application;
+using TweetHomeAlabama.Domain.Model;
 
-namespace TweetHomeAlabama.API.Controllers
+namespace TweetHomeAlabama.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
@@ -22,7 +23,7 @@ namespace TweetHomeAlabama.API.Controllers
             List<Bird> birdList = new List<Bird>();
             try
             {
-                //await call to repo
+                //TODO: don't forget await
             }
             catch (Exception ex)
             {
