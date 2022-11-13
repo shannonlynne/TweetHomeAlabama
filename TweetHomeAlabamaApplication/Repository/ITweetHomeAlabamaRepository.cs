@@ -1,6 +1,6 @@
 ﻿using TweetHomeAlabama.Domain.Model;
 
-namespace TweetHomeAlabama.Infrastructure.Repository
+namespace TweetHomeAlabama.Application.Repository
 {
     public interface ITweetHomeAlabamaRepository<T> where T : class
     {

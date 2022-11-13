@@ -2,7 +2,7 @@
 using TweetHomeAlabama.Domain.Model;
 using TweetHomeAlabama.Infrastructure.DbContext;
 
-namespace TweetHomeAlabama.Infrastructure.Repository
+namespace TweetHomeAlabama.Application.Repository
 {
     public class TweetHomeAlabamaRepository<T> : ITweetHomeAlabamaRepository<T> where T : class
     {
