@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TweetHomeAlabamaApplication\TweetHomeAlabamaApplication.csproj" />
+    <ProjectReference Include="..\TweetHomeAlabamaApplication\TweetHomeAlabama.Application.csproj" />
   </ItemGroup>
 
 </Project>

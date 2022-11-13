@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Windows.Markup;
 using TweetHomeAlabama.Web.Models;
 
 namespace TweetHomeAlabama.Web.Controllers
@@ -18,8 +19,11 @@ namespace TweetHomeAlabama.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
+        [HttpPost]
+        public IActionResult Index(BirdTraits values)
+        { 
+            var BirdTraits = new BirdTraits();
+
             return View();
         }
 

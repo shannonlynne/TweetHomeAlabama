@@ -1,8 +1,40 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using TweetHomeAlabama.Web.Models
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model BirdTraits
+
+<!DOCTYPE html>
+<html>
+<head>    
+    <link rel="stylesheet" href="~/StyleSheet.css" type="text/css">
+</head >
+<body class="body">
+    <div class="text-center">
+        <h1 class="main-header">Tweet Home Alabama</h1>
+    </div>
+    @Html.DropDownListFor(m => m.Season,
+    new SelectList(Enum.GetValues(typeof(Season))),
+    "Select Season")
+
+    @Html.DropDownListFor(m => m.Size,
+    new SelectList(Enum.GetValues(typeof(Size))),
+    "Select Size")
+    <style>
+        #content {
+            position: relative;
+        }
+
+            #content img {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                height: 300px;
+                width: 200px;
+            }
+    </style>
+
+    <div id="content">
+        <img src="images/Cover.png" class="ribbon" alt="" />
+    </div>
+</body>
+</html>
+
