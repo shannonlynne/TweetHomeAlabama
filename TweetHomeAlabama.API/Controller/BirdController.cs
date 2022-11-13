@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TweetHomeAlabama.Api.Models;
 using TweetHomeAlabama.Application;
 
 namespace TweetHomeAlabama.API.Controllers
