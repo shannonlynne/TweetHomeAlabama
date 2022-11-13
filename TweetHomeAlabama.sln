@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.Infrastruc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{24BD1A67-A159-43C6-B47B-D26960CDA6F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.Application", "TweetHomeAlabamaApplication\TweetHomeAlabama.Application.csproj", "{41B2BF6A-1C34-405A-B7CC-A9457E75F988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.App", "TweetHomeAlabamaApplication\TweetHomeAlabama.App.csproj", "{41B2BF6A-1C34-405A-B7CC-A9457E75F988}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.Web", "TweetHomeAlabama.Web\TweetHomeAlabama.Web.csproj", "{E8822640-37BB-4DAD-8957-09F7B741F61B}"
 EndProject
