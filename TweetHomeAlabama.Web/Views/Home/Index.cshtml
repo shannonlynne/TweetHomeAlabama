@@ -12,15 +12,15 @@
 		<h1 class="main-header">Tweet Home Alabama</h1>
 	</div>
 
-	<form id="myform" action="api/bird/getbirds" method="get">
+	<form id="myform" action="bird/getbirds" method="get">
 		<input type="checkbox" id="color" name="color" value="Blue">
 		<label for="colorBlue"> Blue</label><br>
 		<input type="checkbox" id="color" name="color" value="Red">
 		<label for="colorRed"> Red</label><br>
 		<br>
-		<input type="checkbox" id="shape" name="shape" value="Shape">
+		<input type="checkbox" id="shape" name="shape" value="Round">
 		<label for="shapeRound"> Round</label><br>
-		<input type="checkbox" id="shape" name="shape" value="Shape">
+		<input type="checkbox" id="shape" name="shape" value="Tall">
 		<label for="shapeTall"> Tall</label><br>
 		<label for="season">Which season was it?</label>
 		<select id="season" name="season">
@@ -46,7 +46,7 @@
 			$('#btn').submit(function () {
 
 				$.ajax({
-					url: 'api/Bird/GetBirds', 
+					url: 'Bird/GetBirds', 
 					type: 'GET',
 					timeout: '12000', (optional 12 seconds)
 					datatype: 'text',
