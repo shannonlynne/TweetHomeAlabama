@@ -12,32 +12,54 @@
 		<h1 class="main-header">Tweet Home Alabama</h1>
 	</div>
 
-		<form action="/action_page.php">
-			<input type="checkbox" id="color" name="color" value="Blue">
-			<label for="colorBlue"> Blue</label><br>
-			<br>
-			<input type="checkbox" id="color" name="color" value="Red">
-			<label for="colorRed"> Red</label><br>
-			<br>
-			<label for="cars">Which season was it?</label>
-			<select id="season" name="season">
-				<option value="winter">Winter</option>
-				<option value="spring">Spring</option>
-				<option value="summer">Summer</option>
-				<option value="fall">Fall</option>
-			</select>
-			<br><br>
-			<label for="cars">How big was it?</label>
-			<select id="size" name="size">
-				<option value="tiny">Tiny</option>
-				<option value="small">Small</option>
-				<option value="medium">Medium</option>
-				<option value="large">Large</option>
-			</select>
-			<br><br><input type="submit" value="Search">
-		</form>
+	<form id="myform" action="api/bird/getbirds" method="get">
+		<input type="checkbox" id="color" name="color" value="Blue">
+		<label for="colorBlue"> Blue</label><br>
+		<input type="checkbox" id="color" name="color" value="Red">
+		<label for="colorRed"> Red</label><br>
+		<br>
+		<input type="checkbox" id="shape" name="shape" value="Shape">
+		<label for="shapeRound"> Round</label><br>
+		<input type="checkbox" id="shape" name="shape" value="Shape">
+		<label for="shapeTall"> Tall</label><br>
+		<label for="season">Which season was it?</label>
+		<select id="season" name="season">
+			<option value="winter">Winter</option>
+			<option value="spring">Spring</option>
+			<option value="summer">Summer</option>
+			<option value="fall">Fall</option>
+		</select>
+		<br><br>
+		<label for="size">How big was it?</label>
+		<select id="size" name="size">
+			<option value="tiny">Tiny</option>
+			<option value="small">Small</option>
+			<option value="medium">Medium</option>
+			<option value="large">Large</option>
+		</select>
+		<br><br><input type="submit" id="btn" value="Search">
+	</form>
 
-		<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+	<script>
+		$(document).ready(function () {
+
+			$('#btn').submit(function () {
+
+				$.ajax({
+					url: 'api/Bird/GetBirds', 
+					type: 'GET',
+					timeout: '12000', (optional 12 seconds)
+					datatype: 'text',
+					data: {
+						color: myform.color.value,
+						shape : myform.shape.value,
+						size: myform.size.value,
+						season: myform.season.value					
+					}
+				});
+			});
+		});
+	</script>
 
 	<style>
 		#content {
