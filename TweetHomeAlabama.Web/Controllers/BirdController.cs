@@ -5,8 +5,7 @@ using TweetHomeAlabama.Domain.Model;
 namespace TweetHomeAlabama.Web.Controllers
 {
     [ApiController]
-    //[Route("api/[controller]/[action]")]  //TODO: cleanup
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]  //TODO: change routing
     public class BirdController : Controller
     {
         private readonly TweetHomeAlabamaService _repository;
@@ -20,8 +19,8 @@ namespace TweetHomeAlabama.Web.Controllers
             //_logger = logger;
         }
 
-        [HttpGet("getbirds")] 
-        public async Task<IActionResult> GetBirds(string? color, string? shape, string season, string size)
+        [HttpGet] 
+        public async Task<IActionResult> GetBirds(string? color, string? shape, string season, string size) //TODO: Do I really want nulls?
         {
             List<Bird> birdList = new List<Bird>();
             try
