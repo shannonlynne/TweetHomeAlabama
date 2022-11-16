@@ -5,36 +5,57 @@
 <!DOCTYPE html>
 <html>
 <head>    
-    <link rel="stylesheet" href="~/StyleSheet.css" type="text/css">
+	<link rel="stylesheet" href="~/StyleSheet.css" type="text/css">
 </head >
 <body class="body">
-    <div class="text-center">
-        <h1 class="main-header">Tweet Home Alabama</h1>
-    </div>
-    @Html.DropDownListFor(m => m.Season,
-    new SelectList(Enum.GetValues(typeof(Season))),
-    "Select Season")
+	<div class="text-center">
+		<h1 class="main-header">Tweet Home Alabama</h1>
+	</div>
 
-    @Html.DropDownListFor(m => m.Size,
-    new SelectList(Enum.GetValues(typeof(Size))),
-    "Select Size")
-    <style>
-        #content {
-            position: relative;
-        }
+		<form action="/action_page.php">
+			<input type="checkbox" id="color" name="color" value="Blue">
+			<label for="colorBlue"> Blue</label><br>
+			<br>
+			<input type="checkbox" id="color" name="color" value="Red">
+			<label for="colorRed"> Red</label><br>
+			<br>
+			<label for="cars">Which season was it?</label>
+			<select id="season" name="season">
+				<option value="winter">Winter</option>
+				<option value="spring">Spring</option>
+				<option value="summer">Summer</option>
+				<option value="fall">Fall</option>
+			</select>
+			<br><br>
+			<label for="cars">How big was it?</label>
+			<select id="size" name="size">
+				<option value="tiny">Tiny</option>
+				<option value="small">Small</option>
+				<option value="medium">Medium</option>
+				<option value="large">Large</option>
+			</select>
+			<br><br><input type="submit" value="Search">
+		</form>
 
-            #content img {
-                position: absolute;
-                top: 0px;
-                right: 0px;
-                height: 300px;
-                width: 200px;
-            }
-    </style>
+		<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
 
-    <div id="content">
-        <img src="images/Cover.png" class="ribbon" alt="" />
-    </div>
+	<style>
+		#content {
+			position: relative;
+		}
+
+			#content img {
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				height: 300px;
+				width: 200px;
+			}
+	</style>
+
+	<div id="content">
+		<img src="images/Cover.png" class="ribbon" alt="" />
+	</div>
 </body>
 </html>
 
