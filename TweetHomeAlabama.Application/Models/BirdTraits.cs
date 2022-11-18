@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TweetHomeAlabama.Web.Models
+namespace TweetHomeAlabama.Application.Models
 {
     public class BirdTraits
     {

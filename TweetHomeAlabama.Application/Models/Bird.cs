@@ -1,4 +1,4 @@
-﻿namespace TweetHomeAlabama.Api.Models
+﻿namespace TweetHomeAlabama.Application.Models
 {
     public class Bird
     {

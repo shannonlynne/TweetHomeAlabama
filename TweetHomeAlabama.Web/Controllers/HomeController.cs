@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Windows.Markup;
+using TweetHomeAlabama.Application.Models;
 using TweetHomeAlabama.Web.Models;
 
 namespace TweetHomeAlabama.Web.Controllers

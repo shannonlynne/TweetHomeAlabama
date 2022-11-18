@@ -29,8 +29,7 @@ namespace TweetHomeAlabama.Application.Repository
         {
             List<T> birds = dbSet.ToList();
 
-            var colors = birdTraits.Color.Split(";").Select(x => x.Trim());
-            var shape = birdTraits.Shape.Split(";").Select(x => x.Trim());
+            
             
             //Where(b => b.Traits.Contains(birdtraits)).ToList();
 

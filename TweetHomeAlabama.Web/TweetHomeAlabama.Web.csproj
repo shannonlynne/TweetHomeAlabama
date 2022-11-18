@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\TweetHomeAlabama.Application\TweetHomeAlabama.Application.csproj" />
     <ProjectReference Include="..\TweetHomeAlabama.Domain\TweetHomeAlabama.Domain.csproj" />
-    <ProjectReference Include="..\TweetHomeAlabamaApplication\TweetHomeAlabama.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

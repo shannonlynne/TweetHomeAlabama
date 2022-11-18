@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TweetHomeAlabama.Application;
 using TweetHomeAlabama.Domain.Model;
 
 namespace TweetHomeAlabama.Web.Controllers
@@ -8,8 +7,8 @@ namespace TweetHomeAlabama.Web.Controllers
     [Route("[controller]/[action]")]  //TODO: change routing
     public class BirdController : Controller
     {
-        private readonly TweetHomeAlabamaService _repository;
-        private readonly ILogger<BirdController> _logger;
+        //private readonly TweetHomeAlabamaService _repository;
+        //private readonly ILogger<BirdController> _logger;
 
         //TODO:add dependencies
         public BirdController() //TweetHomeAlabamaService repository, ILogger<BirdController> logger)
@@ -20,7 +19,7 @@ namespace TweetHomeAlabama.Web.Controllers
         }
 
         [HttpGet] 
-        public async Task<IActionResult> GetBirds(string? color, string? shape, string season, string size) //TODO: Do I really want nulls?
+        public async Task<IActionResult> GetBirds(string? colors, string? shapes, string season, string size) //TODO: Do I really want nulls?
         {
             List<Bird> birdList = new List<Bird>();
             try
@@ -29,7 +28,7 @@ namespace TweetHomeAlabama.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
+                //_logger.LogError(ex.Message);
                 return NotFound();
             }
 

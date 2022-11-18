@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TweetHomeAlabama.Domain\TweetHomeAlabama.Domain.csproj" />
     <ProjectReference Include="..\TweetHomeAlabama.Infrastructure\TweetHomeAlabama.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿@using TweetHomeAlabama.Web.Models
+﻿@using TweetHomeAlabama.Application.Models
 
 @model BirdTraits
 
@@ -13,14 +13,14 @@
 	</div>
 
 	<form id="myform" action="bird/getbirds" method="get">
-		<input type="checkbox" id="color" name="color" value="Blue">
+		<input type="checkbox" id="colorsBlue" name="colors" value="Blue">
 		<label for="colorBlue"> Blue</label><br>
-		<input type="checkbox" id="color" name="color" value="Red">
+		<input type="checkbox" id="colorsRed" name="colors" value="Red">
 		<label for="colorRed"> Red</label><br>
 		<br>
-		<input type="checkbox" id="shape" name="shape" value="Round">
+		<input type="checkbox" id="shapeRound" name="shapes" value="Round">
 		<label for="shapeRound"> Round</label><br>
-		<input type="checkbox" id="shape" name="shape" value="Tall">
+		<input type="checkbox" id="shapeBlue" name="shapes" value="Tall">
 		<label for="shapeTall"> Tall</label><br>
 		<label for="season">Which season was it?</label>
 		<select id="season" name="season">
@@ -50,11 +50,11 @@
 					type: 'GET',
 					timeout: '12000', (optional 12 seconds)
 					datatype: 'text',
-					data: {
-						color: myform.color.value,
-						shape : myform.shape.value,
-						size: myform.size.value,
-						season: myform.season.value					
+					data: { colors
+						//colors: colors,
+						//shape : myform.shape.value,
+						//size: myform.size.value,
+						//season: myform.season.value					
 					}
 				});
 			});
