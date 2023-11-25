@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TweetHomeAlabama.Application;
+using TweetHomeAlabama.Application.Service;
 using TweetHomeAlabama.Domain.Model;
 
 namespace TweetHomeAlabama.Web.Controllers
@@ -8,21 +8,36 @@ namespace TweetHomeAlabama.Web.Controllers
     [Route("[controller]/[action]")]  //TODO: change routing
     public class BirdController : Controller
     {
-        private readonly TweetHomeAlabamaService _repository;
+        private readonly ITweetHomeAlabamaService _service;
         private readonly ILogger<BirdController> _logger;
 
         //TODO:add dependencies
-        public BirdController(TweetHomeAlabamaService repository, ILogger<BirdController> logger)
+        public BirdController(ITweetHomeAlabamaService service, ILogger<BirdController> logger)
         {
             //TODO: implement
-            _repository = repository;
+            _service = service;
             _logger = logger;
         }
 
         [HttpGet] 
-        public async Task<IActionResult> GetBirds(string[]? colors, string? shapes, string season, string size) //TODO: Do I really want nulls?
+        public async Task<IActionResult> GetBirds(List<string>? colors, string? shape, string season, string size, string habitat) //TODO: Do I really want nulls?
         {
-            List<Bird> birdList = new List<Bird>();
+            var traitList = new List<string>();
+            var birdList = new List<Bird>();
+
+            if (colors != null)
+            {
+                foreach (var color in colors)
+                    traitList.Add(color);
+            }
+
+            if (shape is not null)
+                traitList.Add(shape);
+
+            traitList.Add(season);
+            traitList.Add(size);
+            traitList.Add(habitat);
+
             try
             {
                 //TODO: don't forget await

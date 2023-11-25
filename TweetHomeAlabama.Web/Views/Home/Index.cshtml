@@ -1,6 +1,6 @@
 ﻿@using TweetHomeAlabama.Application.Models
 
-@model BirdTraits
+@model BirdTrait
 
 <!DOCTYPE html>
 <html>
@@ -12,24 +12,45 @@
 		<h1 class="main-header">Tweet Home Alabama</h1>
 	</div>
 
+	<div></div>
 	<form id="myform" action="bird/getbirds" method="get">
+		<label for="season">Select the bird's colors</label>
+
 		<input type="checkbox" id="colorsBlue" name="colors" value="Blue">
 		<label for="colorBlue"> Blue</label><br>
+
 		<input type="checkbox" id="colorsRed" name="colors" value="Red">
 		<label for="colorRed"> Red</label><br>
+
 		<input type="checkbox" id="colorsYellow" name="colors" value="Yellow">
 		<label for="colorYellow"> Yellow</label><br>
+
 		<input type="checkbox" id="colorsWhite" name="colors" value="White">
-		<label for="colorWhite"> Red</label><br>
+		<label for="colorWhite"> White</label><br>
+
 		<input type="checkbox" id="colorsBrown" name="colors" value="Brown">
 		<label for="colorBrown"> Brown </label><br>
+
 		<input type="checkbox" id="colorsGrey" name="colors" value="Grey">
 		<label for="colorGrey"> Grey</label><br>
+
+		<input type="checkbox" id="colorsBlack" name="colors" value="Black">
+		<label for="colorBlack"> Black </label><br>
+
 		<br>
-		<input type="checkbox" id="shapeRound" name="shapes" value="Round">
-		<label for="shapeRound"> Round</label><br>
-		<input type="checkbox" id="shapeBlue" name="shapes" value="Tall">
-		<label for="shapeTall"> Tall</label><br>
+		<label for="season">Which is the most identifying features?</label>
+		<select id="shape" name="shape">
+			<option value="round">Round</option>
+			<option value="tall">Tall</option>
+			<option value="longBeak">Long Beak</option>
+			<option value="pointedWing">Pointed Wing</option>
+			<option value="longTail">Long Tail</option>
+			<option value="short">Short</option>
+			<option value="longBeak">Long Beak</option>
+			<option value="squat">Squat</option>
+		</select>
+		<br><br>
+
 		<label for="season">Which season was it?</label>
 		<select id="season" name="season">
 			<option value="winter">Winter</option>
@@ -38,6 +59,7 @@
 			<option value="fall">Fall</option>
 		</select>
 		<br><br>
+
 		<label for="size">How big was it?</label>
 		<select id="size" name="size">
 			<option value="tiny">Tiny</option>
@@ -45,7 +67,19 @@
 			<option value="medium">Medium</option>
 			<option value="large">Large</option>
 		</select>
-		<br><br><input type="submit" id="btn" value="Search">
+		<br><br>
+
+		<select id="habitat" name="habitat">
+			<option value="marsh">Marsh</option>
+			<option value="lake">Lake</option>
+			<option value="pond">Pond</option>
+			<option value="bushes">Bushes</option>
+			<option value="trees">Trees</option>
+			<option value="grassland">Grassland</option>
+		</select>
+		<br><br>
+		
+		<input type="submit" id="btn" value="Search">
 	</form>
 
 	<script>
@@ -58,18 +92,17 @@
 					type: 'GET',
 					timeout: '12000', (optional 12 seconds)
 					datatype: 'text',
-					data: { 
-						colors: colors,
-						shape : myform.shape.value,
-						size: myform.size.value,
-						season: myform.season.value					
+					data: { colors
+						//colors: colors,
+						//shape : myform.shape.value,
+						//size: myform.size.value,
+						//season: myform.season.value					
 					}
 				});
 			});
 		});
 	</script>
 
-	<div>
 	<style>
 		#content {
 			position: relative;
@@ -86,7 +119,6 @@
 
 	<div id="content">
 		<img src="images/Cover.png" class="ribbon" alt="" />
-	</div>
 	</div>
 </body>
 </html>

@@ -20,9 +20,11 @@ namespace TweetHomeAlabama.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(BirdTraits values)
+        public IActionResult Index(BirdTrait values)
         { 
-            var BirdTraits = new BirdTraits();
+            var BirdTraits = new BirdTrait();
+
+            //build trait list
 
             return View();
         }

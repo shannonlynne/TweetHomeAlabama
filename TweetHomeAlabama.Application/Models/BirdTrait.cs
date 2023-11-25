@@ -2,12 +2,13 @@
 
 namespace TweetHomeAlabama.Application.Models
 {
-    public class BirdTraits
+    public class BirdTrait
     {
         public Season Season { get; set; }
-        public Color Color { get; set; }
+        public List<Color>? Colors { get; set; } = new List<Color>();
         public Shape Shape { get; set; }
         public Size Size { get; set; }
+        public Habitat Habitat { get; set; }
     }
 
     public enum Season
@@ -20,15 +21,12 @@ namespace TweetHomeAlabama.Application.Models
     public enum Color
     {
         Red,
-        Green,
         Blue,
         White,
         Gray,
         Black,
         Yellow,
-        Orange,
-        Purple,
-        Teal
+        Brown
     }
 
     public enum Size
@@ -41,20 +39,23 @@ namespace TweetHomeAlabama.Application.Models
     public enum Shape
     {
         Tall,
-        [Display(Name = "Long Legs")]
-        LongLegs,
-        [Display(Name = "Long Beak")]
         LongBeak,
-        [Display(Name = "Rounded Beak")]
-        RoundedBeak,
         Round,
         [Display(Name = "Pointed Wing")]
         PointedWing,
-        [Display(Name = "Narrow Tail")]
-        NarrowTail,
         [Display(Name = "Long Tail")]
         LongTail,
         Short,
         Squat
+    }
+
+    public enum Habitat
+    {
+        Marsh,
+        Lake,
+        Pond,
+        Bushes,
+        Trees,
+        Grassland
     }
 }

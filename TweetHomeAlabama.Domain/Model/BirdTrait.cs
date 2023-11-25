@@ -7,11 +7,11 @@
         public string Shape { get; set; }
         public string Size { get; set; }
         public string Color { get; set; }
-        public int Habitat { get; set; }
+        public string Habitat { get; set; }
         #endregion
 
         #region Constructors
-        public BirdTrait(string season, string shape, string size, string color, int habitat)
+        public BirdTrait(string season, string shape, string size, string color, string habitat)
         {
             Season = season;
             Shape = shape;
@@ -22,3 +22,4 @@
         #endregion
     }
 }
+

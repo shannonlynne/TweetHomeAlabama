@@ -5,17 +5,17 @@
         #region Properties
         public string Name { get; set; }
         public string ImageId { get; set; }
-        public string Traits { get; set; }
-        public string Blurb { get; set; }
+        public List<string> Traits { get; set; }
+        public string Info { get; set; }
         #endregion
 
         #region Constructors
-        public Bird(string name, string imageId, string traits, string blurb)
+        public Bird(string name, string imageId, List<string> traits, string info)
         {
             Name = name;
             ImageId = imageId;
             Traits = traits;
-            Blurb = blurb;
+            Info = info;
         }
         #endregion
     }

@@ -12,7 +12,10 @@ namespace TweetHomeAlabama.Infrastructure.DataContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
              => optionsBuilder.UseNpgsql("Host=my_host;Database=my_db;Username=my_user;Password=my_pw");
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {  }
+        protected override void OnModelCreating(ModelBuilder builder) 
+        {
+            base.OnModelCreating(builder);
+        }
 
         public DbSet<Bird> Birds => Set<Bird>();
         public DbSet<BirdTrait> BirdTraits => Set<BirdTrait>();
