@@ -1,33 +1,36 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using TweetHomeAlabama.Domain.Model;
-using TweetHomeAlabama.Infrastructure.DbContext;
+using TweetHomeAlabama.Infrastructure.DataContext;
 
 namespace TweetHomeAlabama.Application.Repository
 {
-    public class TweetHomeAlabamaRepository<T> : ITweetHomeAlabamaRepository<T> where T : class
+    public class TweetHomeAlabamaRepository<Bird> : ITweetHomeAlabamaRepository<Bird> where Bird : class
     {
-        private TweetHomeAlabamaDataContext _context;
-        DbSet<T> dbSet;
+        private TweetHomeAlabamaDbContext _context;
+        DbContextOptions<TweetHomeAlabamaDbContext> _options;
+        DbSet<Bird> dbSet;
 
-        public TweetHomeAlabamaRepository(TweetHomeAlabamaDataContext context)
+        public TweetHomeAlabamaRepository(TweetHomeAlabamaDbContext context, DbContextOptions<TweetHomeAlabamaDbContext> options)
         {
-            this._context = new TweetHomeAlabamaDataContext();
-            dbSet = _context.Set<T>();
+            _options = options;
+            this._context = new TweetHomeAlabamaDbContext(_options);
+            dbSet = _context.Set<Bird>();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<Bird> GetAll()
         {
             return dbSet.ToList();
         }
 
-        public T? GetById(object id)
+        public Bird? GetById(object id)
         {
             return dbSet.Find(id);
         }
 
-        public T GetBirdByTraits(BirdTrait birdTraits)
+        public Bird GetBirdByTraits(BirdTrait birdTraits)
         {
-            List<T> birds = dbSet.ToList();
+            List<Bird> birds = dbSet.ToList();
 
             
             
@@ -36,12 +39,12 @@ namespace TweetHomeAlabama.Application.Repository
             throw new NotImplementedException();
         }
 
-        public void Insert(T obj)
+        public void Insert(Bird obj)
         {
             dbSet.Add(obj);
         }
 
-        public void Update(T obj)
+        public void Update(Bird obj)
         {
             dbSet.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;    
@@ -49,7 +52,7 @@ namespace TweetHomeAlabama.Application.Repository
          
         public void Delete(object id)
         {
-            T? existing = dbSet.Find(id);
+            Bird? existing = dbSet.Find(id);
             if (existing != null)
                 dbSet.Remove(existing);
         }

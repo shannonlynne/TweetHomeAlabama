@@ -1,6 +1,4 @@
-﻿using TweetHomeAlabama.Domain.Model;
-
-namespace TweetHomeAlabama.Application.Repository
+﻿namespace TweetHomeAlabama.Application.Repository
 {
     public interface ITweetHomeAlabamaRepository<T> where T : class
     {

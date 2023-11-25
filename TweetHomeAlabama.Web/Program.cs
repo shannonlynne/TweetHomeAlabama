@@ -1,7 +1,17 @@
+using TweetHomeAlabama.Domain.Model;
+using TweetHomeAlabama.Application.Repository;
+using TweetHomeAlabama.Infrastructure.DataContext;
+using System.Configuration;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddMvc();
+builder.Services.AddDbContext<TweetHomeAlabamaDbContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSingleton<ITweetHomeAlabamaRepository<Bird> , TweetHomeAlabamaRepository<Bird>>();
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TweetHomeAlabama.Application;
 using TweetHomeAlabama.Domain.Model;
 
 namespace TweetHomeAlabama.Web.Controllers
@@ -7,15 +8,15 @@ namespace TweetHomeAlabama.Web.Controllers
     [Route("[controller]/[action]")]  //TODO: change routing
     public class BirdController : Controller
     {
-        //private readonly TweetHomeAlabamaService _repository;
-        //private readonly ILogger<BirdController> _logger;
+        private readonly TweetHomeAlabamaService _repository;
+        private readonly ILogger<BirdController> _logger;
 
         //TODO:add dependencies
-        public BirdController() //TweetHomeAlabamaService repository, ILogger<BirdController> logger)
+        public BirdController(TweetHomeAlabamaService repository, ILogger<BirdController> logger)
         {
             //TODO: implement
-            //_repository = repository;
-            //_logger = logger;
+            _repository = repository;
+            _logger = logger;
         }
 
         [HttpGet] 
@@ -28,7 +29,7 @@ namespace TweetHomeAlabama.Web.Controllers
             }
             catch (Exception ex)
             {
-                //_logger.LogError(ex.Message);
+                _logger.LogError(ex.Message);
                 return NotFound();
             }
 
