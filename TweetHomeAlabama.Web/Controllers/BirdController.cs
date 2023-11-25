@@ -19,7 +19,7 @@ namespace TweetHomeAlabama.Web.Controllers
         }
 
         [HttpGet] 
-        public async Task<IActionResult> GetBirds(string? colors, string? shapes, string season, string size) //TODO: Do I really want nulls?
+        public async Task<IActionResult> GetBirds(string[]? colors, string? shapes, string season, string size) //TODO: Do I really want nulls?
         {
             List<Bird> birdList = new List<Bird>();
             try
