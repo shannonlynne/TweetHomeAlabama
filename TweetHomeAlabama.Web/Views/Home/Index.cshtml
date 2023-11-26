@@ -34,8 +34,8 @@
 	<form id="myform" action="bird/getbirds" method="get">
 
 		<br>
-		<label for="color">What is the main color of the bird?</label>
-		<select id="color" name="color">
+		<label for="Color">What is the main color of the bird?</label>
+		<select id="Color" name="Color">
 			<option value="grey">Grey</option>
 			<option value="white">White</option>
 			<option value="brown">Brown</option>
@@ -46,8 +46,8 @@
 		</select>
 		<br><br>
 
-		<label for="secondaryColor">What another color on the bird?</label>
-		<select id="secondaryColor" name="secondaryColor">
+		<label for="SecondaryColor">What another color on the bird?</label>
+		<select id="SecondaryColor" name="SecondaryColor">
 			<option value="grey">Grey</option>
 			<option value="white">White</option>
 			<option value="brown">Brown</option>
@@ -58,8 +58,8 @@
 		</select>
 		<br><br>
 
-		<label for="season">Which is the most identifying features?</label>
-		<select id="shape" name="shape">
+		<label for="Shape">Which is the most identifying features?</label>
+		<select id="Shape" name="Shape">
 			<option value="round">Round</option>
 			<option value="tall">Tall</option>
 			<option value="longBeak">Long Beak</option>
@@ -71,8 +71,8 @@
 		</select>
 		<br><br>
 
-		<label for="season">Which season was it?</label>
-		<select id="season" name="season">
+		<label for="Season">Which season was it?</label>
+		<select id="Season" name="Season">
 			<option value="winter">Winter</option>
 			<option value="spring">Spring</option>
 			<option value="summer">Summer</option>
@@ -80,8 +80,8 @@
 		</select>
 		<br><br>
 
-		<label for="size">How big was it?</label>
-		<select id="size" name="size">
+		<label for="Size">How big was it?</label>
+		<select id="Size" name="Size">
 			<option value="tiny">Tiny</option>
 			<option value="small">Small</option>
 			<option value="medium">Medium</option>
@@ -89,8 +89,8 @@
 		</select>
 		<br><br>
 
-		<label for="size">Where was this bird spotted?</label>
-		<select id="habitat" name="habitat">
+		<label for="Habitat">Where was this bird spotted?</label>
+		<select id="Habitat" name="Habitat">
 			<option value="marsh">Marsh</option>
 			<option value="lake">Lake</option>
 			<option value="pond">Pond</option>
@@ -110,12 +110,12 @@
 		$(document).ready(function () {
 			$("myform").submit(function (event) {
 				var formData = {
-					color: $("#color").val(),
-					secondaryColor: $("#secondaryColor").val(),
-					shape: $("#shape").val(),
-					size: $("#size").val(),
-					season: $("#season").val(),
-					habitat: $("#habitat").val()
+					color: $("#Color").val(),
+					secondaryColor: $("#SecondaryColor").val(),
+					shape: $("#Shape").val(),
+					size: $("#Size").val(),
+					season: $("#Season").val(),
+					habitat: $("#Habitat").val()
 				};
 
 				$.ajax({
