@@ -23,12 +23,6 @@ namespace TweetHomeAlabama.Web.Controllers
         {
             var traitList = new List<string>();
 
-            //if (colors != null)
-            //{
-            //    foreach (var color in colors)
-            //        traitList.Add(color);
-            //}
-
             traitList.Add(color);
             traitList.Add(secondaryColor);
             traitList.Add(shape);
