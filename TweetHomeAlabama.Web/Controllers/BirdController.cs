@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TweetHomeAlabama.Application.Service;
-using TweetHomeAlabama.Domain.Model;
 
 namespace TweetHomeAlabama.Web.Controllers
 {
@@ -20,19 +19,18 @@ namespace TweetHomeAlabama.Web.Controllers
         }
 
         [HttpGet] 
-        public async Task<IActionResult> GetBirds(List<string>? colors, string? shape, string size, string season, string habitat) //TODO: Do I really want nulls?
+        public async Task<IActionResult> GetBirds(string colors, string shape, string size, string season, string habitat) //TODO: Do I really want nulls?
         {
             var traitList = new List<string>();
 
-            if (colors != null)
-            {
-                foreach (var color in colors)
-                    traitList.Add(color);
-            }
+            //if (colors != null)
+            //{
+            //    foreach (var color in colors)
+            //        traitList.Add(color);
+            //}
 
-            if (shape is not null)
-                traitList.Add(shape);
-
+            traitList.Add(colors);
+            traitList.Add(shape);
             traitList.Add(season);
             traitList.Add(size);
             traitList.Add(habitat);

@@ -21,7 +21,8 @@ namespace TweetHomeAlabama.Application.Service
             {
                 birdList = await _context.Birds.Where(x => x.Traits.Contains(birdTrait)).ToListAsync();
             }
-
+            
+            //filter list for multiple values or something?
             return birdList;
         }
     }

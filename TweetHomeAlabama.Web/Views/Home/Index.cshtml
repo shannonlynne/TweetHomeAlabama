@@ -32,30 +32,16 @@
 
 	<div></div>
 	<form id="myform" action="bird/getbirds" method="get">
-		<label for="season">Select the bird's colors</label><br>
-
-		<input type="checkbox" id="colorsBlue" name="colors" value="Blue">
-		<label for="colorBlue"> Blue</label><br>
-
-		<input type="checkbox" id="colorsRed" name="colors" value="Red">
-		<label for="colorRed"> Red</label><br>
-
-		<input type="checkbox" id="colorsYellow" name="colors" value="Yellow">
-		<label for="colorYellow"> Yellow</label><br>
-
-		<input type="checkbox" id="colorsWhite" name="colors" value="White">
-		<label for="colorWhite"> White</label><br>
-
-		<input type="checkbox" id="colorsBrown" name="colors" value="Brown">
-		<label for="colorBrown"> Brown </label><br>
-
-		<input type="checkbox" id="colorsGrey" name="colors" value="Grey">
-		<label for="colorGrey"> Grey</label><br>
-
-		<input type="checkbox" id="colorsBlack" name="colors" value="Black">
-		<label for="colorBlack"> Black </label><br>
 
 		<br>
+		<label for="colors">What color is the bird?</label>
+		<select id="colors" name="colors">
+			<option value="grey">Grey</option>
+			<option value="white">White</option>
+			<option value="brown">Brown</option>
+		</select>
+		<br><br>
+
 		<label for="season">Which is the most identifying features?</label>
 		<select id="shape" name="shape">
 			<option value="round">Round</option>
@@ -98,27 +84,34 @@
 		</select>
 		<br><br>
 		
-		<input type="submit" id="btn" value="Search">
+		<button type="submit" class="btn btn-success">
+          Search
+        </button>
 	</form>
 
 	<script>
-		$(document).ready(function () {
 
-			$('#btn').submit(function () {
+		$(document).ready(function () {
+			$("myform").submit(function (event) {
+				var formData = {
+					colors: $("#colors").val()
+					shape: $("#shape").val(),
+					size: $("#size").val(),
+					season: $("#season").val(),
+					habitat: $("#habitat").val()
+				};
 
 				$.ajax({
-					url: 'Bird/GetBirds', 
-					type: 'GET',
-					timeout: '12000', (optional 12 seconds)
-					datatype: 'text',
-					data: { 
-						colors: myform.colors.value,
-						shape : myform.shape.value,
-						size: myform.size.value,
-						season: myform.season.value,
-						habitat: myform.habitat.value
-				}
+					type: "GET",
+					url: "Bird/GetBirds",
+					data: formData,
+					dataType: "json",
+					encode: true,
+				}).done(function (data) {
+					console.log(data);
 				});
+
+				event.preventDefault();
 			});
 		});
 	</script>
