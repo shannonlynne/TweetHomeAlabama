@@ -12,7 +12,7 @@ builder.Services.AddMvc();
 
 builder.Services.AddTransient<ITweetHomeAlabamaService, TweetHomeAlabamaService>();
 builder.Services.AddDbContext<TweetHomeAlabamaDbContext>(options =>
-        options.UseNpgsql(builder.Configuration.GetConnectionString("ConnectionString")));
+        options.UseNpgsql(builder.Configuration.GetConnectionString("ShannonApps")));
 builder.Services.AddTransient<ITweetHomeAlabamaRepository<Bird> , TweetHomeAlabamaRepository<Bird>>();
 
 var app = builder.Build();
