@@ -12,9 +12,27 @@
 		<h1 class="main-header">Tweet Home Alabama</h1>
 	</div>
 
+	<style>
+		#content {
+			position: relative;
+		}
+
+			#content img {
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				height: 300px;
+				width: 200px;
+			}
+	</style>
+
+	<div id="content">
+		<img src="images/Cover.png" class="ribbon" alt="" />
+	</div>
+
 	<div></div>
 	<form id="myform" action="bird/getbirds" method="get">
-		<label for="season">Select the bird's colors</label>
+		<label for="season">Select the bird's colors</label><br>
 
 		<input type="checkbox" id="colorsBlue" name="colors" value="Blue">
 		<label for="colorBlue"> Blue</label><br>
@@ -69,6 +87,7 @@
 		</select>
 		<br><br>
 
+		<label for="size">Where was this bird spotted?</label>
 		<select id="habitat" name="habitat">
 			<option value="marsh">Marsh</option>
 			<option value="lake">Lake</option>
@@ -102,24 +121,6 @@
 			});
 		});
 	</script>
-
-	<style>
-		#content {
-			position: relative;
-		}
-
-			#content img {
-				position: absolute;
-				top: 0px;
-				right: 0px;
-				height: 300px;
-				width: 200px;
-			}
-	</style>
-
-	<div id="content">
-		<img src="images/Cover.png" class="ribbon" alt="" />
-	</div>
 </body>
 </html>
 
