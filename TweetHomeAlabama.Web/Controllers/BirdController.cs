@@ -20,10 +20,9 @@ namespace TweetHomeAlabama.Web.Controllers
         }
 
         [HttpGet] 
-        public async Task<IActionResult> GetBirds(List<string>? colors, string? shape, string season, string size, string habitat) //TODO: Do I really want nulls?
+        public async Task<IActionResult> GetBirds(List<string>? colors, string? shape, string size, string season, string habitat) //TODO: Do I really want nulls?
         {
             var traitList = new List<string>();
-            var birdList = new List<Bird>();
 
             if (colors != null)
             {
@@ -40,15 +39,14 @@ namespace TweetHomeAlabama.Web.Controllers
 
             try
             {
-                //TODO: don't forget await
+                var birdList = await _service.GetBirds(traitList);
+                return Ok(birdList);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
                 return NotFound();
             }
-
-            return Ok(birdList);
         }
     }
 }
