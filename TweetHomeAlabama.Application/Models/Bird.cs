@@ -5,6 +5,6 @@
         public int Name { get; set; }
         public string? Info { get; set; }
         public string? ImageUrl { get; set; }
-        public List<BirdTrait> BirdTraits { get; set; } = new List<BirdTrait>();
+        public List<string> BirdTraits { get; set; } = new List<string>();
     }
 }
