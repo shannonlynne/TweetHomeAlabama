@@ -18,8 +18,6 @@ namespace TweetHomeAlabama.Infrastructure.DataContext
         }
 
         public DbSet<Bird> Birds => Set<Bird>();
-        public DbSet<BirdTrait> BirdTraits => Set<BirdTrait>();
-        public DbSet<Image> Images => Set<Image>();
     }
 }
 
