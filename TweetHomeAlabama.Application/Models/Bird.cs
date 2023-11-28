@@ -1,10 +1,12 @@
 ﻿namespace TweetHomeAlabama.Application.Models
 {
-    public class Bird
+    public class BirdDto
     {
-        public int Name { get; set; }
-        public string? Info { get; set; }
-        public string? ImageUrl { get; set; }
-        public List<string> BirdTraits { get; set; } = new List<string>();
+        public string Color { get; set; } = string.Empty;
+        public string SecondaryColor { get; set; } = string.Empty;
+        public string Shape { get; set; } = string.Empty;
+        public string Season { get; set; } = string.Empty;
+        public string Habitat { get; set; } = string.Empty;
+        public string Size { get; set; } = string.Empty;
     }
 }
