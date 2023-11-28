@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 using TweetHomeAlabama.Domain.Model;
 using TweetHomeAlabama.Infrastructure.DataContext;
 

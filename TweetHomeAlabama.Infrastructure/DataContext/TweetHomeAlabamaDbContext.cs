@@ -6,15 +6,33 @@ namespace TweetHomeAlabama.Infrastructure.DataContext
     public class TweetHomeAlabamaDbContext : DbContext
     {
         public TweetHomeAlabamaDbContext(DbContextOptions<TweetHomeAlabamaDbContext> options)
-            : base(options)
-        { }
+            : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-             => optionsBuilder.UseNpgsql("Host=my_host;Database=my_db;Username=my_user;Password=my_pw");
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    var connectionString = _configuration.GetConnectionString("ShannonApps");
 
-        protected override void OnModelCreating(ModelBuilder builder) 
+        //    if (connectionString is not null)
+        //        optionsBuilder.UseNpgsql(connectionString);
+
+        //}
+        //    // => optionsBuilder.UseNpgsql("Server = localHost:5433; Database=ShannonApps;Trusted_Connection=True;");
+
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+            builder.Entity<Bird>(entity =>
+            {
+                entity.ToTable("Bird");
+
+                entity.Property<int>("BirdId")
+                 .ValueGeneratedOnAdd();
+                entity.HasKey("BirdId");
+
+                entity.Property(x => x.Name);
+                entity.Property(x => x.Info);
+                entity.Property(x => x.Traits);
+                entity.Property(x => x.ImageId);
+            });
         }
 
         public DbSet<Bird> Birds => Set<Bird>();
