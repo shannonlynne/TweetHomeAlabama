@@ -13,7 +13,7 @@ namespace TweetHomeAlabama.Application.Service
             _context = context;
         }
 
-        public async Task<List<Bird>> GetBirds(List<string> birdTraits)
+        public async Task<List<Bird>> GetBirds(string birdTraits)
         {
             var birdList = new List<Bird>();
 
