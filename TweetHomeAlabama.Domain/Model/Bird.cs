@@ -3,14 +3,15 @@
     public class Bird
     {
         #region Properties
+        public int BirdId { get; set; }
         public string Name { get; set; }
         public string ImageId { get; set; }
-        public List<string> Traits { get; set; }
+        public string Traits { get; set; }
         public string Info { get; set; }
         #endregion
 
         #region Constructors
-        public Bird(string name, string imageId, List<string> traits, string info)
+        public Bird(string name, string imageId, string traits, string info)
         {
             Name = name;
             ImageId = imageId;
