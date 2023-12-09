@@ -55,7 +55,7 @@ th, td {
                     @Html.DisplayFor(modelItem => bird.Info)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => bird.Image)
+                    <img src="@Url.Content(bird.Image)" alt="" border=3 height=200 width=200></img>
                 </td>
             </tr>
             <br>
