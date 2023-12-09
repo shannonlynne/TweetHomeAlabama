@@ -55,7 +55,7 @@
 			<option value="blue">Blue</option>
 			<option value="yellow">Yellow</option>
 			<option value="black">Black</option>
-			<option value="beige">Beige</option>
+			<option value="secondColorUnsure">Not sure</option>
 		</select>
 		<br><br>
 
@@ -69,18 +69,7 @@
 			<option value="short">Short</option>
 			<option value="longBeak">Long Beak</option>
 			<option value="squat">Squat</option>
-		</select>
-		<br><br>
-
-		<label for="Season">Which season was it?</label>
-		<select id="Season" name="Season">
-			<option value="winter">Winter</option>
-			<option value="spring">Spring</option>
-			<option value="summer">Summer</option>
-			<option value="fall">Fall</option>
-			<option value="warm">Warm months</option>
-			<option value="cold">Cold Months</option>
-			<option value="all">All</option>
+			<option value="shapeUnsure">Not sure</option>
 		</select>
 		<br><br>
 
@@ -102,6 +91,7 @@
 			<option value="trees">Trees</option>
 			<option value="woodland">Woodlands</option>
 			<option value="structure">Hidden in a building/structure</option>
+			<option value="habitatUnsure">Not sure</option>
 		</select>
 		<br><br>
 		
@@ -119,7 +109,6 @@
 					secondaryColor: $("#SecondaryColor").val(),
 					shape: $("#Shape").val(),
 					size: $("#Size").val(),
-					season: $("#Season").val(),
 					habitat: $("#Habitat").val()
 				};
 

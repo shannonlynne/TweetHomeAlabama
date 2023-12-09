@@ -30,22 +30,20 @@ namespace TweetHomeAlabama.Application.Service
 
                 foreach (var trait in birdTraits)
                 {
-                    if (birds.Any(x => x.Color == trait))
+                    if (bird.Color.Equals(trait))
                         color = true;
 
-                    if (bird.Season == trait || bird.Season == "all")
+                    else if (bird.Habitat.Equals(trait))
                         count++;
-                    else if (bird.Habitat == trait)
+                    else if (bird.Shape.Equals(trait))
                         count++;
-                    else if (bird.Shape == trait)
+                    else if (bird.SecondaryColor.Equals(trait))
                         count++;
-                    else if (bird.SecondaryColor == trait)
-                        count++;
-                    else if (bird.Size == trait)
+                    else if (bird.Size.Equals(trait))
                         count++;
                 }
 
-                if (color && count > 1)
+                if (color && count > 0)
                     birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
             }
 
