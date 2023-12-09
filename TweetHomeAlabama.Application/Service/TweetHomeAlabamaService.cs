@@ -24,7 +24,6 @@ namespace TweetHomeAlabama.Application.Service
 
             foreach (var bird in birds)
             {
-                //birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
                 int count = 0;
                 bool color = false;
 
@@ -32,7 +31,6 @@ namespace TweetHomeAlabama.Application.Service
                 {
                     if (bird.Color.Equals(trait))
                         color = true;
-
                     else if (bird.Habitat.Equals(trait))
                         count++;
                     else if (bird.Shape.Equals(trait))
@@ -46,7 +44,6 @@ namespace TweetHomeAlabama.Application.Service
                 if (color && count > 0)
                     birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
             }
-
 
             return birdList;
         }
