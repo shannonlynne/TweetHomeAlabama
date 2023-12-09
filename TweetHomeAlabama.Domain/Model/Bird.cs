@@ -4,17 +4,15 @@
     {
         #region Properties
         public string Name { get; set; }
-        public string ImageId { get; set; }
-        public string Traits { get; set; }
+        public string Image { get; set; }
         public string Info { get; set; }
         #endregion
 
         #region Constructors
-        public Bird(string name, string imageId, string traits, string info)
+        public Bird(string name, string image, string info)
         {
             Name = name;
-            ImageId = imageId;
-            Traits = traits;
+            Image = image;
             Info = info;
         }
         #endregion

@@ -5,7 +5,7 @@
         #region Properties
         public int BirdId { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string ImageId { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
         public string Info { get; set; } = string.Empty;
         public string Color { get; set; } = string.Empty;
         public string SecondaryColor { get; set; } = string.Empty;
@@ -20,7 +20,7 @@
             string shape, string season, string habitat, string size)
         {
             Name = name;
-            ImageId = imageId;
+            Image = imageId;
             Info = info;
             Color = Color;
             SecondaryColor = secondaryColor;

@@ -24,9 +24,13 @@ namespace TweetHomeAlabama.Application.Service
 
             foreach (var bird in birds)
             {
+                birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
 
+                //foreach (var trait in birdTraits)
+                //{
+                //    //if (bird.Habitat)
+                //}
             }
-            
             return birdList;
         }
     }

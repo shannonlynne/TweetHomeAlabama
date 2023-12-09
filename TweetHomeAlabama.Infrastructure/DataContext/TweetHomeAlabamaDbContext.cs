@@ -27,7 +27,7 @@ namespace TweetHomeAlabama.Infrastructure.DataContext
 
                     entity.Property(x => x.BirdId).HasColumnName("BirdId");
                     entity.Property(x => x.Info).HasColumnName("Info");
-                    entity.Property(x => x.ImageId).HasColumnName("ImageId");
+                    entity.Property(x => x.Image).HasColumnName("Image");
                     entity.Property(x => x.Color).HasColumnName("Color");
                     entity.Property(x => x.Season).HasColumnName("Season");
                     entity.Property(x => x.Shape).HasColumnName("Shape");

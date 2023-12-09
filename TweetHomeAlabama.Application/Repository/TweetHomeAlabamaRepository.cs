@@ -11,8 +11,8 @@ namespace TweetHomeAlabama.Application.Repository
 
         public TweetHomeAlabamaRepository(TweetHomeAlabamaDbContext context, DbContextOptions<TweetHomeAlabamaDbContext> options)
         {
+            _context = context;
             _options = options;
-            this._context = new TweetHomeAlabamaDbContext(_options);
             dbSet = _context.Set<BirdEntity>();
         }
 

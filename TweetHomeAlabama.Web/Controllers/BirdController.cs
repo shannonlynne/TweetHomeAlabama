@@ -33,7 +33,7 @@ namespace TweetHomeAlabama.Web.Controllers
             try
             {
                 var birdList = await _service.GetBirds(traitList);
-                return Ok(birdList);
+                return View(birdList);
             }
             catch (Exception ex)
             {
