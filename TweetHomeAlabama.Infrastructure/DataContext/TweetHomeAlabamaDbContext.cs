@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TweetHomeAlabama.Domain.Model;
-using TweetHomeAlabama.Infrastructure.Entity;
+using TweetHomeAlabama.Data.Entity;
 
-namespace TweetHomeAlabama.Infrastructure.DataContext
+namespace TweetHomeAlabama.Data.DataContext
 {
     public class TweetHomeAlabamaDbContext : DbContext
     {

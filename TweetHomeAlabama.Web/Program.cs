@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using TweetHomeAlabama.Application.Repository;
 using TweetHomeAlabama.Application.Service;
-using TweetHomeAlabama.Domain.Model;
-using TweetHomeAlabama.Infrastructure.DataContext;
-using TweetHomeAlabama.Infrastructure.Entity;
+using TweetHomeAlabama.Data.DataContext;
+using TweetHomeAlabama.Data.Entity;
+using TweetHomeAlabama.Data.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

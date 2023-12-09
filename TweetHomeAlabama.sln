@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.UnitTests", "TweetHomeAlabama.UnitTests\TweetHomeAlabama.UnitTests.csproj", "{A0649463-D40A-47D3-82CE-42CB5277597D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.Infrastructure", "TweetHomeAlabama.Infrastructure\TweetHomeAlabama.Infrastructure.csproj", "{B3D4F0D7-58ED-42EE-8B65-63B3F158883E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TweetHomeAlabama.Data", "TweetHomeAlabama.Infrastructure\TweetHomeAlabama.Data.csproj", "{B3D4F0D7-58ED-42EE-8B65-63B3F158883E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{24BD1A67-A159-43C6-B47B-D26960CDA6F4}"
 EndProject

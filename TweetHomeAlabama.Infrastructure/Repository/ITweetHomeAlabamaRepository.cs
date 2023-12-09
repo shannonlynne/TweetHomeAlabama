@@ -1,6 +1,6 @@
-﻿using TweetHomeAlabama.Infrastructure.Entity;
+﻿using TweetHomeAlabama.Data.Entity;
 
-namespace TweetHomeAlabama.Application.Repository
+namespace TweetHomeAlabama.Data.Repository
 {
     public interface ITweetHomeAlabamaRepository<T> where T : class
     {

@@ -1,18 +1,15 @@
-﻿using TweetHomeAlabama.Application.Repository;
+﻿using TweetHomeAlabama.Data.Entity;
+using TweetHomeAlabama.Data.Repository;
 using TweetHomeAlabama.Domain.Model;
-using TweetHomeAlabama.Infrastructure.DataContext;
-using TweetHomeAlabama.Infrastructure.Entity;
 
 namespace TweetHomeAlabama.Application.Service
 {
     public class TweetHomeAlabamaService : ITweetHomeAlabamaService
     {
-        private readonly TweetHomeAlabamaDbContext _context;
         private readonly ITweetHomeAlabamaRepository<BirdEntity> _repository;
 
-        public TweetHomeAlabamaService(TweetHomeAlabamaDbContext context, ITweetHomeAlabamaRepository<BirdEntity> repository)
+        public TweetHomeAlabamaService(ITweetHomeAlabamaRepository<BirdEntity> repository)
         {
-            _context = context;
             _repository = repository;
         }
 
@@ -26,6 +23,7 @@ namespace TweetHomeAlabama.Application.Service
             {
                 int count = 0;
                 bool color = false;
+                bool size = false;
 
                 foreach (var trait in birdTraits)
                 {
@@ -38,10 +36,10 @@ namespace TweetHomeAlabama.Application.Service
                     else if (bird.SecondaryColor.Equals(trait))
                         count++;
                     else if (bird.Size.Equals(trait))
-                        count++;
+                        size = true;
                 }
 
-                if (color && count > 0)
+                if (color && size && count > 0)
                     birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
             }
 

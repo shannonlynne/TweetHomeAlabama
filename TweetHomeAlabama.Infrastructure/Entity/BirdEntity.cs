@@ -1,4 +1,4 @@
-﻿namespace TweetHomeAlabama.Infrastructure.Entity
+﻿namespace TweetHomeAlabama.Data.Entity
 {
     public class BirdEntity
     {

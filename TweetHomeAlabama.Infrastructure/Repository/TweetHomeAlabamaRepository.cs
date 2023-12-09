@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TweetHomeAlabama.Infrastructure.DataContext;
+using TweetHomeAlabama.Data.DataContext;
 
-namespace TweetHomeAlabama.Application.Repository
+namespace TweetHomeAlabama.Data.Repository
 {
     public class TweetHomeAlabamaRepository<BirdEntity> : ITweetHomeAlabamaRepository<BirdEntity> where BirdEntity : class
     {
@@ -16,9 +16,9 @@ namespace TweetHomeAlabama.Application.Repository
             dbSet = _context.Set<BirdEntity>();
         }
 
-        public async Task<List<Infrastructure.Entity.BirdEntity>> GetBirds()
+        public async Task<List<Data.Entity.BirdEntity>> GetBirds()
         {
-            List<Infrastructure.Entity.BirdEntity>  birdList = await _context.Birds.ToListAsync();
+            List<Data.Entity.BirdEntity>  birdList = await _context.Birds.ToListAsync();
                 
             return birdList;
         }
