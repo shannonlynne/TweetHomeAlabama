@@ -24,13 +24,32 @@ namespace TweetHomeAlabama.Application.Service
 
             foreach (var bird in birds)
             {
-                birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
+                //birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
+                int count = 0;
+                bool color = false;
 
-                //foreach (var trait in birdTraits)
-                //{
-                //    //if (bird.Habitat)
-                //}
+                foreach (var trait in birdTraits)
+                {
+                    if (birds.Any(x => x.Color == trait))
+                        color = true;
+
+                    if (bird.Season == trait || bird.Season == "all")
+                        count++;
+                    else if (bird.Habitat == trait)
+                        count++;
+                    else if (bird.Shape == trait)
+                        count++;
+                    else if (bird.SecondaryColor == trait)
+                        count++;
+                    else if (bird.Size == trait)
+                        count++;
+                }
+
+                if (color && count > 1)
+                    birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
             }
+
+
             return birdList;
         }
     }
