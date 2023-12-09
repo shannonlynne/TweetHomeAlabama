@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using TweetHomeAlabama.Application.Repository;
+using TweetHomeAlabama.Domain.Model;
 using TweetHomeAlabama.Infrastructure.DataContext;
 using TweetHomeAlabama.Infrastructure.Entity;
 
@@ -7,22 +8,25 @@ namespace TweetHomeAlabama.Application.Service
     public class TweetHomeAlabamaService : ITweetHomeAlabamaService
     {
         private readonly TweetHomeAlabamaDbContext _context;
+        private readonly ITweetHomeAlabamaRepository<BirdEntity> _repository;
 
-        public TweetHomeAlabamaService(TweetHomeAlabamaDbContext context)
+        public TweetHomeAlabamaService(TweetHomeAlabamaDbContext context, ITweetHomeAlabamaRepository<BirdEntity> repository)
         {
             _context = context;
+            _repository = repository;
         }
 
-        public async Task<List<BirdEntity>> GetBirds(List<string> birdTraits)
+        public async Task<List<Bird>> GetBirds(List<string> birdTraits)
         {
-            var birdList = new List<BirdEntity>();
+            var birdList = new List<Bird>();
 
-            foreach (var birdTrait in birdTraits)
+            var birds = await _repository.GetBirds();
+
+            foreach (var bird in birds)
             {
-                birdList = await _context.Birds.ToListAsync();
+
             }
             
-            //filter list for multiple values or something?
             return birdList;
         }
     }

@@ -1,8 +1,10 @@
-﻿namespace TweetHomeAlabama.Application.Repository
+﻿using TweetHomeAlabama.Infrastructure.Entity;
+
+namespace TweetHomeAlabama.Application.Repository
 {
     public interface ITweetHomeAlabamaRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        Task<List<BirdEntity>> GetBirds();
         T? GetById(object id);
         void Insert(T obj);
         void Update(T obj);

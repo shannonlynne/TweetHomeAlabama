@@ -3,6 +3,7 @@ using TweetHomeAlabama.Application.Repository;
 using TweetHomeAlabama.Application.Service;
 using TweetHomeAlabama.Domain.Model;
 using TweetHomeAlabama.Infrastructure.DataContext;
+using TweetHomeAlabama.Infrastructure.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,10 @@ if (connectionString is not null)
     builder.Services.AddDbContext<TweetHomeAlabamaDbContext>(options =>
         options.UseNpgsql(connectionString));
 
-builder.Services.AddTransient<ITweetHomeAlabamaRepository<Bird> , TweetHomeAlabamaRepository<Bird>>();
+builder.Services.AddTransient<ITweetHomeAlabamaRepository<BirdEntity> , TweetHomeAlabamaRepository<BirdEntity>>();
+builder.Services.AddTransient<ITweetHomeAlabamaService, TweetHomeAlabamaService>();
+
+//builder.Services.AddTransient<
 
 var app = builder.Build();
 

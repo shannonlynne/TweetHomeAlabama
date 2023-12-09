@@ -1,50 +1,39 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using TweetHomeAlabama.Domain.Model;
 using TweetHomeAlabama.Infrastructure.DataContext;
 
 namespace TweetHomeAlabama.Application.Repository
 {
-    public class TweetHomeAlabamaRepository<Bird> : ITweetHomeAlabamaRepository<Bird> where Bird : class
+    public class TweetHomeAlabamaRepository<BirdEntity> : ITweetHomeAlabamaRepository<BirdEntity> where BirdEntity : class
     {
         private TweetHomeAlabamaDbContext _context;
         DbContextOptions<TweetHomeAlabamaDbContext> _options;
-        DbSet<Bird> dbSet;
+        DbSet<BirdEntity> dbSet;
 
         public TweetHomeAlabamaRepository(TweetHomeAlabamaDbContext context, DbContextOptions<TweetHomeAlabamaDbContext> options)
         {
             _options = options;
             this._context = new TweetHomeAlabamaDbContext(_options);
-            dbSet = _context.Set<Bird>();
+            dbSet = _context.Set<BirdEntity>();
         }
 
-        public IEnumerable<Bird> GetAll()
+        public async Task<List<Infrastructure.Entity.BirdEntity>> GetBirds()
         {
-            return dbSet.ToList();
+            List<Infrastructure.Entity.BirdEntity>  birdList = await _context.Birds.ToListAsync();
+                
+            return birdList;
         }
 
-        public Bird? GetById(object id)
+        public BirdEntity? GetById(object id)
         {
             return dbSet.Find(id);
         }
 
-        public Bird GetBirdByTraits(BirdTrait birdTraits)
-        {
-            List<Bird> birds = dbSet.ToList();
-
-            
-            
-            //Where(b => b.Traits.Contains(birdtraits)).ToList();
-
-            throw new NotImplementedException();
-        }
-
-        public void Insert(Bird obj)
+        public void Insert(BirdEntity obj)
         {
             dbSet.Add(obj);
         }
 
-        public void Update(Bird obj)
+        public void Update(BirdEntity obj)
         {
             dbSet.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;    
@@ -52,7 +41,7 @@ namespace TweetHomeAlabama.Application.Repository
          
         public void Delete(object id)
         {
-            Bird? existing = dbSet.Find(id);
+            BirdEntity? existing = dbSet.Find(id);
             if (existing != null)
                 dbSet.Remove(existing);
         }
@@ -62,7 +51,7 @@ namespace TweetHomeAlabama.Application.Repository
             _context.SaveChanges();
         }
 
-        private bool disposed = false;  //TODO: include this dispose section?
+        private bool disposed = false;  
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)

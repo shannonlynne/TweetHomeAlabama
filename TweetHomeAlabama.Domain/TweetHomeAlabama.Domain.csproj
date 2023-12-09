@@ -6,12 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Model\BirdTrait.cs.REMOVE" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Model\BirdTrait.cs.REMOVE" />
-  </ItemGroup>
-
 </Project>

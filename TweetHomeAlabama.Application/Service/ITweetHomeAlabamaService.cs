@@ -1,9 +1,9 @@
-﻿using TweetHomeAlabama.Infrastructure.Entity;
+﻿using TweetHomeAlabama.Domain.Model;
 
 namespace TweetHomeAlabama.Application.Service
 {
     public interface ITweetHomeAlabamaService
     {
-        Task<List<BirdEntity>> GetBirds(List<string> birdTraits);
+        Task<List<Bird>> GetBirds(List<string> birdEntities);
     }
 }

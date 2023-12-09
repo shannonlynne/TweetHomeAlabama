@@ -19,15 +19,15 @@ namespace TweetHomeAlabama.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Index(BirdTrait values)
-        { 
-            var BirdTraits = new BirdTrait();
+        //[HttpPost]
+        //public IActionResult Index(BirdTrait values)
+        //{ 
+        //    var BirdTraits = new BirdTrait();
 
-            //build trait list
+        //    //build trait list
 
-            return View();
-        }
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
