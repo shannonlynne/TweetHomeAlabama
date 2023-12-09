@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TweetHomeAlabama.Domain.Model;
 using TweetHomeAlabama.Infrastructure.DataContext;
+using TweetHomeAlabama.Infrastructure.Entity;
 
 namespace TweetHomeAlabama.Application.Service
 {
@@ -13,13 +13,13 @@ namespace TweetHomeAlabama.Application.Service
             _context = context;
         }
 
-        public async Task<List<Bird>> GetBirds(string birdTraits)
+        public async Task<List<BirdEntity>> GetBirds(List<string> birdTraits)
         {
-            var birdList = new List<Bird>();
+            var birdList = new List<BirdEntity>();
 
             foreach (var birdTrait in birdTraits)
             {
-                birdList = await _context.Birds.Where(x => x.Traits.Contains(birdTrait)).ToListAsync();
+                birdList = await _context.Birds.ToListAsync();
             }
             
             //filter list for multiple values or something?

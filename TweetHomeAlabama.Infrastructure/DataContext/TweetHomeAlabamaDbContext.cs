@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TweetHomeAlabama.Domain.Model;
+using TweetHomeAlabama.Infrastructure.Entity;
 
 namespace TweetHomeAlabama.Infrastructure.DataContext
 {
     public class TweetHomeAlabamaDbContext : DbContext
     {
-        public DbSet<Bird> Birds => Set<Bird>();
+        public DbSet<BirdEntity> Birds => Set<BirdEntity>();
 
         public TweetHomeAlabamaDbContext(DbContextOptions options) : base(options)
         {
@@ -15,7 +16,7 @@ namespace TweetHomeAlabama.Infrastructure.DataContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             {
-                modelBuilder.Entity<Bird>(entity =>
+                modelBuilder.Entity<BirdEntity>(entity =>
                 {
                     entity.ToTable("Bird", "Bird");
 
@@ -23,7 +24,6 @@ namespace TweetHomeAlabama.Infrastructure.DataContext
                     {
                         bird.BirdId
                     });
-
 
                     entity.Property(x => x.BirdId).HasColumnName("BirdId");
                     entity.Property(x => x.Info).HasColumnName("Info");

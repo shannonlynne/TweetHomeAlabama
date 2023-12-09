@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Models\BirdTrait.cs.REMOVE" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Models\BirdTrait.cs.REMOVE" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TweetHomeAlabama.Infrastructure\TweetHomeAlabama.Infrastructure.csproj" />
   </ItemGroup>
 
