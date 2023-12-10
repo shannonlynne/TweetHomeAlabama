@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using TweetHomeAlabama.Application.Models;
 using TweetHomeAlabama.Web.Models;
 
 namespace TweetHomeAlabama.Web.Controllers
@@ -18,16 +17,6 @@ namespace TweetHomeAlabama.Web.Controllers
         {
             return View();
         }
-
-        //[HttpPost]
-        //public IActionResult Index(BirdTrait values)
-        //{ 
-        //    var BirdTraits = new BirdTrait();
-
-        //    //build trait list
-
-        //    return View();
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -16,9 +16,9 @@ namespace TweetHomeAlabama.Data.Repository
             dbSet = _context.Set<BirdEntity>();
         }
 
-        public async Task<List<Data.Entity.BirdEntity>> GetBirds()
+        public async Task<List<Entity.BirdEntity>> GetBirds()
         {
-            List<Data.Entity.BirdEntity>  birdList = await _context.Birds.ToListAsync();
+            List<Entity.BirdEntity>  birdList = await _context.Birds.ToListAsync();
                 
             return birdList;
         }

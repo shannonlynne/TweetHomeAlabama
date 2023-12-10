@@ -1,4 +1,4 @@
-﻿namespace TweetHomeAlabama.Application.Models
+﻿namespace TweetHomeAlabama.Application.Model
 {
     public class BirdDto
     {

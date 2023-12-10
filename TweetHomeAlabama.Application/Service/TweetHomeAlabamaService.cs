@@ -23,7 +23,7 @@ namespace TweetHomeAlabama.Application.Service
             {
                 int count = 0;
                 bool color = false;
-                bool size = false;
+
 
                 foreach (var trait in birdTraits)
                 {
