@@ -36,10 +36,10 @@ namespace TweetHomeAlabama.Application.Service
                     else if (bird.SecondaryColor.Equals(trait))
                         count++;
                     else if (bird.Size.Equals(trait))
-                        size = true;
+                        count++;
                 }
 
-                if (color && size && count > 0)
+                if (color && count > 0)
                     birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
             }
 
