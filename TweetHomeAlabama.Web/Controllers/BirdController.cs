@@ -10,10 +10,8 @@ namespace TweetHomeAlabama.Web.Controllers
         private readonly ITweetHomeAlabamaService _service;
         private readonly ILogger<BirdController> _logger;
 
-        //TODO:add dependencies
         public BirdController(ITweetHomeAlabamaService service, ILogger<BirdController> logger)
         {
-            //TODO: implement
             _service = service;
             _logger = logger;
         }
