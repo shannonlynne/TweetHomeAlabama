@@ -17,8 +17,14 @@ namespace TweetHomeAlabama.Web.Controllers
         }
 
         [HttpGet] 
-        public async Task<IActionResult> GetBirds(string color, string secondaryColor, string shape, string size, string habitat) //TODO: Do I really want nulls?
+        public async Task<IActionResult> GetBirds(string color, string secondaryColor, string shape, string size, string habitat) 
         {
+            if (color is null) throw new ArgumentNullException(nameof(color));
+            if (secondaryColor is null) throw new ArgumentNullException(nameof(secondaryColor));
+            if (shape is null) throw new ArgumentNullException(nameof(shape));
+            if (size is null) throw new ArgumentNullException(nameof(size));
+            if (habitat is null) throw new ArgumentNullException(nameof(habitat));
+
             var traitList = new List<string>();
 
             traitList.Add(color);

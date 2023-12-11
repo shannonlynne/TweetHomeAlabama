@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using TweetHomeAlabama.Data.DataContext;
 
 namespace TweetHomeAlabama.Data.Repository
@@ -6,20 +7,32 @@ namespace TweetHomeAlabama.Data.Repository
     public class TweetHomeAlabamaRepository<BirdEntity> : ITweetHomeAlabamaRepository<BirdEntity> where BirdEntity : class
     {
         private TweetHomeAlabamaDbContext _context;
-        DbContextOptions<TweetHomeAlabamaDbContext> _options;
-        DbSet<BirdEntity> dbSet;
+        private readonly DbContextOptions<TweetHomeAlabamaDbContext> _options;
+        private readonly ILogger<TweetHomeAlabamaRepository<BirdEntity>> _logger;
+        private readonly DbSet<BirdEntity> dbSet;
 
-        public TweetHomeAlabamaRepository(TweetHomeAlabamaDbContext context, DbContextOptions<TweetHomeAlabamaDbContext> options)
+        public TweetHomeAlabamaRepository(TweetHomeAlabamaDbContext context, DbContextOptions<TweetHomeAlabamaDbContext> options,
+            ILogger<TweetHomeAlabamaRepository<BirdEntity>> logger)
         {
             _context = context;
             _options = options;
+            _logger = logger;
             dbSet = _context.Set<BirdEntity>();
         }
 
         public async Task<List<Entity.BirdEntity>> GetBirds()
         {
-            List<Entity.BirdEntity>  birdList = await _context.Birds.ToListAsync();
-                
+            var birdList = new List<Entity.BirdEntity>();
+
+            try
+            {
+                birdList = await _context.Birds.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to get birds from dbcontext with { message }", ex.Message);
+            }
+
             return birdList;
         }
 
