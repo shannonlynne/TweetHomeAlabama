@@ -19,6 +19,8 @@ namespace TweetHomeAlabama.Application.Service
 
         public async Task<List<Bird>> GetBirds(List<string> birdTraits)
         {
+            if (birdTraits is null) throw new ArgumentNullException(nameof(birdTraits));
+
             var birdList = new List<Bird>();
 
             var birds = new List<BirdEntity>();
