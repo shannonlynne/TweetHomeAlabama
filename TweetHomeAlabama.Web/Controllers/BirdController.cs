@@ -41,13 +41,13 @@ namespace TweetHomeAlabama.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Get Request failed with exception message: { message }", ex.Message);
+                _logger.LogError("Get Request failed with message: { message }", ex.Message);
 
                 if (ex.InnerException is not null)
-                    _logger.LogError("Inner exception message: { message }", ex.InnerException);
+                    _logger.LogError("Get Request failed with message: { message }", ex.InnerException);
                          
                 return new ViewResult() { ViewName = "Error" };
             }
         }
     }
-}
+
