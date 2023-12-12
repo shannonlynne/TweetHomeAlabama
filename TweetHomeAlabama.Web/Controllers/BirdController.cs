@@ -16,7 +16,7 @@ namespace TweetHomeAlabama.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet] 
+        [HttpGet]
         public async Task<IActionResult> GetBirds(string color, string secondaryColor, string shape, string size, string habitat) 
         {
             if (color is null) throw new ArgumentNullException(nameof(color));
@@ -36,12 +36,17 @@ namespace TweetHomeAlabama.Web.Controllers
             try
             {
                 var birdList = await _service.GetBirds(traitList);
+
                 return View(birdList);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                return NotFound();
+                _logger.LogError("Get Request failed with exception message: { message }", ex.Message);
+
+                if (ex.InnerException is not null)
+                    _logger.LogError("Inner exception message: { message }", ex.InnerException);
+                         
+                return new ViewResult() { ViewName = "Error" };
             }
         }
     }
