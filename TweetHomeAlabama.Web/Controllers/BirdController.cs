@@ -17,7 +17,7 @@ namespace TweetHomeAlabama.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetBirds(string color, string secondaryColor, string shape, string size, string habitat) 
+        public async Task<IActionResult> GetBirds(string color, string secondaryColor, string shape, string size, string habitat)
         {
             if (color is null) throw new ArgumentNullException(nameof(color));
             if (secondaryColor is null) throw new ArgumentNullException(nameof(secondaryColor));
@@ -45,9 +45,10 @@ namespace TweetHomeAlabama.Web.Controllers
 
                 if (ex.InnerException is not null)
                     _logger.LogError("Get Request failed with message: { message }", ex.InnerException);
-                         
+
                 return new ViewResult() { ViewName = "Error" };
             }
         }
     }
+}
 

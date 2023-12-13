@@ -44,6 +44,7 @@ namespace TweetHomeAlabama.Data.Repository
         public void Insert(BirdEntity obj)
         {
             dbSet.Add(obj);
+            Save();
         }
 
         public void Update(BirdEntity obj)

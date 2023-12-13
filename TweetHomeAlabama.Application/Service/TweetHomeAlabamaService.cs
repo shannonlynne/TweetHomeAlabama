@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Data.Entity;
 using TweetHomeAlabama.Data.Repository;
 using TweetHomeAlabama.Domain.Model;
@@ -65,6 +66,14 @@ namespace TweetHomeAlabama.Application.Service
             }
 
             return birdList;
+        }
+
+        public async Task AddBird(BirdDto bird)
+        {
+            var birdEntity = new BirdEntity(bird.Name, bird.Url, bird.Info, bird.Color, bird.SecondaryColor,
+                bird.Shape, bird.Habitat, bird.Size);
+
+            await Task.Run(() => _repository.Insert(birdEntity));
         }
     }
 }

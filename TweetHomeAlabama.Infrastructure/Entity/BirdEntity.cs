@@ -15,7 +15,7 @@
         #endregion
 
         #region Constructors
-        protected BirdEntity(string name, string imageId, string info, string color, string secondaryColor,
+        public BirdEntity(string name, string imageId, string info, string color, string secondaryColor,
             string shape, string habitat, string size)
         {
             Name = name;
