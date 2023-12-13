@@ -23,9 +23,9 @@
 			}
 	</style>
 
-	<div id="content">
+@*	<div id="content">
 		<img src="images/AddBird.png" class="ribbon" alt="" />
-	</div>
+	</div>*@
 
 	<form id="myform" action="addbird" method="post">
         <label for="Name">Name:</label>
@@ -113,8 +113,8 @@
 
 				$.ajax({
 					type: "Post",
-					url: "Bird/GetBirds",
-					data: JSON.stringify(formData),
+					url: "AddBird/AddBird",
+					data: formData,
 					dataType: "json",
 					encode: true,
 				}).done(function (data) {

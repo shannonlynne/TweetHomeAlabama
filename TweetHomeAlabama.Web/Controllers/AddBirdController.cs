@@ -4,7 +4,9 @@ using TweetHomeAlabama.Application.Service;
 
 namespace TweetHomeAlabama.Web.Controllers
 {
-    public class AddBirdController : Controller
+	[ApiController]
+	[Route("[controller]/[action]")]  
+	public class AddBirdController : Controller
     {
         private readonly ITweetHomeAlabamaService _service;
         private readonly ILogger<BirdController> _logger;
@@ -14,11 +16,11 @@ namespace TweetHomeAlabama.Web.Controllers
             _service = service;
             _logger = logger;
         }
+
 		public IActionResult Index()
 		{
 			return View();
 		}
-
 
 		[HttpPost]
 		public async Task AddBird(BirdDto bird)
