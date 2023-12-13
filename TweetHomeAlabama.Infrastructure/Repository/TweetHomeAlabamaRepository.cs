@@ -22,16 +22,7 @@ namespace TweetHomeAlabama.Data.Repository
 
         public async Task<List<Entity.BirdEntity>> GetBirds()
         {
-            var birdList = new List<Entity.BirdEntity>();
-
-            try
-            {
-                birdList = await _context.Birds.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed to get birds from dbcontext with { message }", ex.Message);
-            }
+            var birdList = await _context.Birds.ToListAsync();
 
             return birdList;
         }

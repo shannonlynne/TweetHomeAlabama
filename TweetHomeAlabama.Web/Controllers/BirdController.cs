@@ -39,6 +39,12 @@ namespace TweetHomeAlabama.Web.Controllers
 
                 return View(birdList);
             }
+            catch (System.Web.Http.HttpResponseException ex)
+            {
+                _logger.LogError("There was a failure retrieving the bird list with {message}", ex.Message);
+
+                return View("Error");
+            }
             catch (Exception ex)
             {
                 _logger.LogError("Get Request failed with message: { message }", ex.Message);

@@ -31,7 +31,10 @@ namespace TweetHomeAlabama.Application.Service
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to get birds from respository with { message }", ex.Message);
+                if (ex.InnerException is not null)
+                    _logger.LogError("Failed to get birds from respository with { message }", ex.InnerException.Message);
+                else 
+                    _logger.LogError("Failed to get birds from respository with { message }", ex.Message);
             }
 
             foreach (var bird in birds)

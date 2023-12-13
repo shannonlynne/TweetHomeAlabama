@@ -30,18 +30,15 @@ namespace TweetHomeAlabama.Web.Controllers
 			{
                 await _service.AddBird(bird);
                 return bird;
-
             }
             catch (Exception ex)
 			{
-                _logger.LogError("Post Request failed with message: { message }", ex.Message);
-
                 if (ex.InnerException is not null)
-                    _logger.LogError("Post Request failed with message: { message }", ex.InnerException);
+                    _logger.LogError("Post Request failed with message: { message }", ex.InnerException.Message);
+                else
+                    _logger.LogError("Post Request failed with message: { message }", ex.Message);
 
                 throw new System.Web.Http.HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
-
-
             }
         }
 	}
