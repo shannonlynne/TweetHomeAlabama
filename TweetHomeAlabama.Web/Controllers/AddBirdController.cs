@@ -4,7 +4,7 @@ using TweetHomeAlabama.Application.Service;
 
 namespace TweetHomeAlabama.Web.Controllers
 {
-	[ApiController]
+    [ApiController]
 	[Route("[controller]/[action]")]  
 	public class AddBirdController : Controller
     {
@@ -23,11 +23,26 @@ namespace TweetHomeAlabama.Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task AddBird(BirdDto bird)
+		public async Task<BirdDto> PostBird(BirdDto bird)
 		{
 			if (bird is null) throw new ArgumentNullException(nameof(bird));
+			try
+			{
+                await _service.AddBird(bird);
+                return bird;
 
-			await _service.AddBird(bird);
+            }
+            catch (Exception ex)
+			{
+                _logger.LogError("Post Request failed with message: { message }", ex.Message);
+
+                if (ex.InnerException is not null)
+                    _logger.LogError("Post Request failed with message: { message }", ex.InnerException);
+
+                throw new System.Web.Http.HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
+            }
+
+
 		}
 	}
 }

@@ -92,33 +92,6 @@
           Search
         </button>
 	</form>
-
-	<script>
-
-		$(document).ready(function () {
-			$("myform").submit(function (event) {
-				var formData = {
-					color: $("#Color").val(),
-					secondaryColor: $("#SecondaryColor").val(),
-					shape: $("#Shape").val(),
-					size: $("#Size").val(),
-					habitat: $("#Habitat").val()
-				};
-
-				$.ajax({
-					type: "GET",
-					url: "Bird/GetBirds",
-					data: formData,
-					dataType: "json",
-					encode: true,
-				}).done(function (data) {
-					console.log(data);
-				});
-
-				event.preventDefault();
-			});
-		});
-	</script>
 </body>
 </html>
 

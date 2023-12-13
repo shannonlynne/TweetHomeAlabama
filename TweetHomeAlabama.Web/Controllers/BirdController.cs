@@ -4,7 +4,7 @@ using TweetHomeAlabama.Application.Service;
 namespace TweetHomeAlabama.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]  //TODO: change routing
+    [Route("[controller]/[action]")]  
     public class BirdController : Controller
     {
         private readonly ITweetHomeAlabamaService _service;

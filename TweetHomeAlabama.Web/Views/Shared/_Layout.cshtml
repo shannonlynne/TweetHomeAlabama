@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TweetHomeAlabama.Web.styles.css" asp-append-version="true" />
     <style>
-        .navbar-nav > li {
-            padding-left: 30px;
-            padding-right: 30px;
+        .navbar .navbar-collapse ul {
+            padding: 0;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -24,17 +26,17 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
                 </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AddBird" asp-action="Index">Bird</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="AddBird" asp-action="Index">Add a Bird</a>
                         </li>
                     </ul>
                 </div>
