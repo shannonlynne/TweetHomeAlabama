@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Data.Entity;
 using TweetHomeAlabama.Data.Repository;

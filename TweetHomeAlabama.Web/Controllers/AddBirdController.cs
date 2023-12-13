@@ -40,9 +40,9 @@ namespace TweetHomeAlabama.Web.Controllers
                     _logger.LogError("Post Request failed with message: { message }", ex.InnerException);
 
                 throw new System.Web.Http.HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
+
+
             }
-
-
-		}
+        }
 	}
 }
