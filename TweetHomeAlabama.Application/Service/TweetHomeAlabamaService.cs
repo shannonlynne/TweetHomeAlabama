@@ -70,12 +70,14 @@ namespace TweetHomeAlabama.Application.Service
             return birdList;
         }
 
-        public async Task AddBird(BirdDto bird)
+        public async Task<BirdDto> AddBird(BirdDto bird)
         {
             var birdEntity = new BirdEntity(bird.Name, bird.Url, bird.Info, bird.Color, bird.SecondaryColor,
                 bird.Shape, bird.Habitat, bird.Size);
 
             await Task.Run(() => _repository.Insert(birdEntity));
+
+            return bird;
         }
     }
 }

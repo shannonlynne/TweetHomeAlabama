@@ -6,6 +6,6 @@ namespace TweetHomeAlabama.Application.Service
     public interface ITweetHomeAlabamaService
     {
         Task<List<Bird>> GetBirds(List<string> birdEntities);
-        Task AddBird(BirdDto bird);
+        Task<BirdDto> AddBird(BirdDto bird);
     }
 }

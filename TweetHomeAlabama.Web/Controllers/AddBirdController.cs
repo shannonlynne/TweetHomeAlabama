@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Application.Service;
 
@@ -26,10 +27,11 @@ namespace TweetHomeAlabama.Web.Controllers
 		public async Task<BirdDto> PostBird(BirdDto bird)
 		{
 			if (bird is null) throw new ArgumentNullException(nameof(bird));
+
 			try
 			{
-                await _service.AddBird(bird);
-                return bird;
+                var result = await Task.Run(() => _service.AddBird(bird));
+                return result;
             }
             catch (Exception ex)
 			{
