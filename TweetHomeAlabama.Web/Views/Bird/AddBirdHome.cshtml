@@ -114,7 +114,7 @@
 			const jsonFormData = buildJsonFormData(form);
 			const headers = buildHeaders();
 			console.log("sending");
-			const response = await performPostHttpRequest('https://localhost:7112/AddBird/PostBird', headers, jsonFormData);
+			const response = await performPostHttpRequest('https://localhost:7112/Bird/AddBird', headers, jsonFormData);
 			alert("Your bird has been saved!")
 			window.location.href = '/'
 			console.log(response);

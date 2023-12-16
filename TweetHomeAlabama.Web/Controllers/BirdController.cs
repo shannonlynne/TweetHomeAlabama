@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Application.Service;
 
 namespace TweetHomeAlabama.Web.Controllers
@@ -14,6 +15,11 @@ namespace TweetHomeAlabama.Web.Controllers
         {
             _service = service;
             _logger = logger;
+        }
+
+        public IActionResult AddBirdHome()
+        {
+            return View();
         }
 
         [HttpGet]
@@ -53,6 +59,28 @@ namespace TweetHomeAlabama.Web.Controllers
                     _logger.LogError("Get Request failed with message: { message }", ex.InnerException);
 
                 return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> AddBird(BirdDto bird)
+        {
+            if (bird is null) throw new ArgumentNullException(nameof(bird));
+
+            try
+            {
+                await Task.Run(() => _service.AddBird(bird));
+
+                return new JsonResult(new { message = "Bird saved successfully" });
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException is not null)
+                    _logger.LogError("Post Request failed with message: { message }", ex.InnerException.Message);
+                else
+                    _logger.LogError("Post Request failed with message: { message }", ex.Message);
+
+                throw new System.Web.Http.HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
             }
         }
     }

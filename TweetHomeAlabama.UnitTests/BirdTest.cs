@@ -40,8 +40,8 @@ namespace TweetHomeAlabama.UnitTests
                 .Returns(Task.FromResult(true));
 
             //Act
-            var controller = new AddBirdController(mockService.Object, mockLogger.Object);
-            var actualResult = await controller.PostBird(birdDto);
+            var controller = new BirdController(mockService.Object, mockLogger.Object);
+            var actualResult = await controller.AddBird(birdDto);
 
             //Assert
             Assert.AreEqual(expectedResult.Value?.GetHashCode(), actualResult.Value?.GetHashCode());
