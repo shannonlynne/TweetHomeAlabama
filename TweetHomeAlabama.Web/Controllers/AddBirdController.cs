@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Net;
 using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Application.Service;
 
@@ -24,14 +23,15 @@ namespace TweetHomeAlabama.Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task<BirdDto> PostBird(BirdDto bird)
+		public async Task<JsonResult> PostBird(BirdDto bird)
 		{
 			if (bird is null) throw new ArgumentNullException(nameof(bird));
 
 			try
 			{
-                var result = await Task.Run(() => _service.AddBird(bird));
-                return result;
+                await Task.Run(() => _service.AddBird(bird));
+                
+                return new JsonResult(new { message = "Bird saved successfully" });
             }
             catch (Exception ex)
 			{

@@ -1,10 +1,3 @@
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using System.Drawing;
-using System.Security.Policy;
-using System.Xml.Linq;
-using TweetHomeAlabama.Application.Model;
-using TweetHomeAlabama.Data.Entity;
-
 namespace TweetHomeAlabama.UnitTests
 {
     [TestClass]
@@ -29,7 +22,7 @@ namespace TweetHomeAlabama.UnitTests
                 Info = "You would love to find one in your pool"
             };
 
-            var expectedResult = new BirdDto
+            var bird = new BirdDto
             {
                 Name = "Flamingo",
                 Color = "pink",
@@ -41,15 +34,17 @@ namespace TweetHomeAlabama.UnitTests
                 Info = "You would love to find one in your pool"
             };
 
+            var expectedResult = new JsonResult(new { message = "Bird saved successfully" });
+
             mockService.Setup(x => x.AddBird(birdDto))
-                .Returns(Task.FromResult(expectedResult));
+                .Returns(Task.FromResult(true));
 
             //Act
             var controller = new AddBirdController(mockService.Object, mockLogger.Object);
             var actualResult = await controller.PostBird(birdDto);
 
             //Assert
-            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual(expectedResult.Value?.GetHashCode(), actualResult.Value?.GetHashCode());
         }
     }
 }
