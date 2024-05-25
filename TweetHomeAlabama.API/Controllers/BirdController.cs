@@ -2,10 +2,10 @@
 using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Application.Service;
 
-namespace TweetHomeAlabama.Web.Controllers
+namespace TweetHomeAlabama.API.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]  
+    [Route("[controller]/[action]")]
     public class BirdController : Controller
     {
         private readonly ITweetHomeAlabamaService _service;
@@ -17,10 +17,15 @@ namespace TweetHomeAlabama.Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult AddBirdHome()
+        public IActionResult Index()
         {
             return View();
         }
+
+        //public IActionResult AddBirdHome()
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         public async Task<IActionResult> GetBirds(string color, string secondaryColor, string shape, string size, string habitat)
@@ -33,7 +38,7 @@ namespace TweetHomeAlabama.Web.Controllers
 
             try
             {
-                var birdList 
+                var birdList
                     = await _service.GetBirds(color, secondaryColor, size, shape, habitat);
 
                 return View(birdList);
@@ -75,7 +80,7 @@ namespace TweetHomeAlabama.Web.Controllers
 
                 throw new System.Web.Http.HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
             }
+
         }
     }
 }
-

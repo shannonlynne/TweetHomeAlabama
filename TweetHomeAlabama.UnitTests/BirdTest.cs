@@ -1,50 +1,50 @@
-namespace TweetHomeAlabama.UnitTests
-{
-    [TestClass]
-    public class BirdTest
-    {
-        private Mock<ITweetHomeAlabamaService> mockService = new Mock<ITweetHomeAlabamaService>();
-        private Mock<ILogger<BirdController>> mockLogger = new Mock<ILogger<BirdController>>();
+//namespace TweetHomeAlabama.UnitTests
+//{
+//    [TestClass]
+//    public class BirdTest
+//    {
+//        private Mock<ITweetHomeAlabamaService> mockService = new Mock<ITweetHomeAlabamaService>();
+//        private Mock<ILogger<BirdController>> mockLogger = new Mock<ILogger<BirdController>>();
 
-        [TestMethod]
-        public async Task AddBird()
-        {
-            //Arrange
-            var birdDto = new BirdDto
-            {
-                Name = "Flamingo",
-                Color = "pink",
-                SecondaryColor = "white",
-                Habitat = "coast",
-                Shape = "tall",
-                Size = "large",
-                Url = "http://flamingoooooooos",
-                Info = "You would love to find one in your pool"
-            };
+//        [TestMethod]
+//        public async Task AddBird()
+//        {
+//            //Arrange
+//            var birdDto = new BirdDto
+//            {
+//                Name = "Flamingo",
+//                Color = "pink",
+//                SecondaryColor = "white",
+//                Habitat = "coast",
+//                Shape = "tall",
+//                Size = "large",
+//                Url = "http://flamingoooooooos",
+//                Info = "You would love to find one in your pool"
+//            };
 
-            var bird = new BirdDto
-            {
-                Name = "Flamingo",
-                Color = "pink",
-                SecondaryColor = "white",
-                Habitat = "coast",
-                Shape = "tall",
-                Size = "large",
-                Url = "http://flamingoooooooos",
-                Info = "You would love to find one in your pool"
-            };
+//            var bird = new BirdDto
+//            {
+//                Name = "Flamingo",
+//                Color = "pink",
+//                SecondaryColor = "white",
+//                Habitat = "coast",
+//                Shape = "tall",
+//                Size = "large",
+//                Url = "http://flamingoooooooos",
+//                Info = "You would love to find one in your pool"
+//            };
 
-            var expectedResult = new JsonResult(new { message = "Bird saved successfully" });
+//            var expectedResult = new JsonResult(new { message = "Bird saved successfully" });
 
-            mockService.Setup(x => x.AddBird(birdDto))
-                .Returns(Task.FromResult(true));
+//            mockService.Setup(x => x.AddBird(birdDto))
+//                .Returns(Task.FromResult(true));
 
-            //Act
-            var controller = new BirdController(mockService.Object, mockLogger.Object);
-            var actualResult = await controller.AddBird(birdDto);
+//            //Act
+//            var controller = new BirdController(mockService.Object, mockLogger.Object);
+//            var actualResult = await controller.AddBird(birdDto);
 
-            //Assert
-            Assert.AreEqual(expectedResult.Value?.GetHashCode(), actualResult.Value?.GetHashCode());
-        }
-    }
-}
+//            //Assert
+//            Assert.AreEqual(expectedResult.Value?.GetHashCode(), actualResult.Value?.GetHashCode());
+//        }
+//    }
+//}

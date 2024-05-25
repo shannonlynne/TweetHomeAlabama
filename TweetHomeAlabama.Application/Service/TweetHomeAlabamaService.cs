@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Web;
 using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Data.Entity;
 using TweetHomeAlabama.Data.Repository;
@@ -17,17 +18,16 @@ namespace TweetHomeAlabama.Application.Service
             _logger = logger;
         }
 
-        public async Task<List<Bird>> GetBirds(List<string> birdTraits)
+        public async Task<List<Bird>> GetBirds(string color, string secondaryColor, string size, string shape, string habitat)
         {
-            if (birdTraits is null) throw new ArgumentNullException(nameof(birdTraits));
+            var birdIds = new List<int>();
 
-            var birdList = new List<Bird>();
-
-            var birds = new List<BirdEntity>();
+            var birdList = new List<BirdEntity>();
 
             try
             {
-                birds = await _repository.GetBirds();
+                birdIds = await _repository.GetIdsUsingTraits(color, secondaryColor, size, shape, habitat);
+                birdList = await _repository.GetBirdMatches(birdIds);
             }
             catch (Exception ex)
             {
@@ -37,45 +37,27 @@ namespace TweetHomeAlabama.Application.Service
                     _logger.LogError("Failed to get birds from respository with { message }", ex.Message);
             }
 
-            foreach (var bird in birds)
-            {
-                int count = 0;
-                bool color = false;
-                bool size = false;
+            var result = new List<Bird>();
 
-                foreach (var trait in birdTraits)
-                {
-                    if (bird.Color.Equals(trait))
-                    {
-                        color = true;
-                        count++;
-                    }
-                    else if (bird.Habitat.Equals(trait))
-                        count++;
-                    else if (bird.Shape.Equals(trait))
-                        count++;
-                    else if (bird.SecondaryColor.Equals(trait))
-                        count++;
-                    else if (bird.Size.Equals(trait))
-                    {
-                        size = true;
-                        count++;
-                    }
-                }
+            foreach (var bird in birdList)
+                result.Add(new Bird(bird.Name, bird.Image, bird.Info));
 
-                if ((color && size) || count > 3)
-                    birdList.Add(new Bird(bird.Name, bird.Image, bird.Info));
-            }
-
-            return birdList;
+            return result;
         }
 
-        public async Task AddBird(BirdDto bird)
+        public async Task<int> AddBird(BirdDto bird)
         {
-            var birdEntity = new BirdEntity(bird.Name, bird.Url, bird.Info, bird.Color, bird.SecondaryColor,
-                bird.Shape, bird.Habitat, bird.Size);
+            var birdEntity = new BirdEntity(bird.Name, bird.Url, bird.Info);
 
-            await Task.Run(() => _repository.Insert(birdEntity));
+            return await Task.Run(() => _repository.Insert(birdEntity));       
+        }
+
+        public async Task AddBirdTraits(BirdTraitsDto birdTraits, int id)
+        {
+            var birdTraitsEntity = new BirdTraitsEntity(birdTraits.Color, birdTraits.SecondaryColor,
+                birdTraits.Size, birdTraits.Shape, birdTraits.Habitat);
+
+            await Task.Run(() => _repository.Insert(birdTraitsEntity));
         }
     }
 }

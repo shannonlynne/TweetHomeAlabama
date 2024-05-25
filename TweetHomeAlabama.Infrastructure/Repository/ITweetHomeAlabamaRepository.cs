@@ -4,11 +4,14 @@ namespace TweetHomeAlabama.Data.Repository
 {
     public interface ITweetHomeAlabamaRepository<T> where T : class
     {
-        Task<List<BirdEntity>> GetBirds();
-        T? GetById(object id);
-        void Insert(T obj);
+        Task<List<Entity.BirdEntity>> GetAllBirds();
+        Task<List<Entity.BirdEntity>> GetBirdMatches(List<int> ids);
+        Task<Entity.BirdEntity?> GetById(int id);
+        Task<List<int>> GetIdsUsingTraits(string color, string secondaryColor, string size, string shape, string habitat);
+        int Insert(Entity.BirdEntity bird);
+        void Insert(Entity.BirdTraitsEntity birdTraits);
         void Update(T obj);
-        void Delete(object id);
+        void Delete(int id);
         void Save();
     }
 }
