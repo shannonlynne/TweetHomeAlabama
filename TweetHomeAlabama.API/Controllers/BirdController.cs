@@ -48,7 +48,7 @@ namespace TweetHomeAlabama.API.Controllers
                     var message = $"Get method failed with exception {ex}";
                     _logger.LogError(message, ex);
 
-                    return new Microsoft.AspNetCore.Mvc.StatusCodeResult(StatusCodes.Status500InternalServerError);
+                    return new StatusCodeResult(StatusCodes.Status500InternalServerError);
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace TweetHomeAlabama.API.Controllers
                 var message = $"Post method failed with exception {ex}";
                 _logger.LogError(message, ex);
 
-                return new Microsoft.AspNetCore.Mvc.StatusCodeResult(StatusCodes.Status500InternalServerError);
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
 
         }

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System.Web.Http;
 using TweetHomeAlabama.Application.Service;
 using TweetHomeAlabama.Data.DataContext;
 using TweetHomeAlabama.Data.Entity;
@@ -25,7 +24,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
