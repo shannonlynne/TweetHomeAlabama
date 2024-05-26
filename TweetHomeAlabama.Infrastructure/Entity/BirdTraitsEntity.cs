@@ -13,8 +13,9 @@
         #endregion
 
         #region Constructors
-        public BirdTraitsEntity(string color, string secondaryColor, string size, string shape, string habitat)
+        public BirdTraitsEntity(int id, string color, string secondaryColor, string size, string shape, string habitat)
         {
+            BirdId = id;
             Color = color;
             SecondaryColor = secondaryColor;
             Size = size;
