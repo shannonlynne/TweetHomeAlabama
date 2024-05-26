@@ -33,7 +33,7 @@ namespace TweetHomeAlabama.Data.DataContext
 
                 modelBuilder.Entity<BirdTraitsEntity>(entity =>
                 {
-                    entity.ToTable("Bird", "BirdTraits");
+                    entity.ToTable("BirdTraits", "Bird");
 
                     entity.HasKey(bird => new
                     {

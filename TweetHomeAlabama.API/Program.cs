@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Web.Http;
 using TweetHomeAlabama.Application.Service;
 using TweetHomeAlabama.Data.DataContext;
 using TweetHomeAlabama.Data.Entity;
@@ -17,15 +18,12 @@ if (connectionString is not null)
 builder.Services.AddTransient<ITweetHomeAlabamaRepository<BirdEntity>, TweetHomeAlabamaRepository<BirdEntity>>();
 builder.Services.AddTransient<ITweetHomeAlabamaService, TweetHomeAlabamaService>();
 
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -34,19 +32,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-////builder.Services.AddControllers();
-//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.UseAuthorization();
-
-//app.UseEndpoints(endpoints =>
-
-//app.MapControllers();
+app.MapControllers();
 
 app.Run();
 

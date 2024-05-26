@@ -56,6 +56,8 @@ namespace TweetHomeAlabama.Data.Repository
             foreach (var bird in birdsByHabitat)
                 birdIds.Add(bird.BirdId);
 
+            var result = new List<int>();
+
             if (birdIds.Count > 0)
             {
                 var groups = birdIds.GroupBy(b => b);
@@ -63,11 +65,11 @@ namespace TweetHomeAlabama.Data.Repository
                 foreach (var group in groups)
                 {
                     if (group.Count() > 2)
-                        birdIds.Add(group.Key);
+                        result.Add(group.Key);
                 }
             }
 
-            return birdIds;
+            return result;
         }
 
         public async Task<List<Entity.BirdEntity>> GetAllBirds()   

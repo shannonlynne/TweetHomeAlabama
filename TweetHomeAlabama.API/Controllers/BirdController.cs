@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Application.Service;
+using TweetHomeAlabama.Domain.Model;
 
 namespace TweetHomeAlabama.API.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]")]
     public class BirdController : Controller
     {
         private readonly ITweetHomeAlabamaService _service;
@@ -17,18 +18,8 @@ namespace TweetHomeAlabama.API.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        //public IActionResult AddBirdHome()
-        //{
-        //    return View();
-        //}
-
-        [HttpGet]
-        public async Task<IActionResult> GetBirds(string color, string secondaryColor, string shape, string size, string habitat)
+        [HttpGet("GetBirds")]
+        public async Task<ActionResult<Bird>> GetBirds(string color, string secondaryColor, string shape, string size, string habitat)
         {
             if (color is null) throw new ArgumentNullException(nameof(color));
             if (secondaryColor is null) throw new ArgumentNullException(nameof(secondaryColor));
@@ -41,27 +32,29 @@ namespace TweetHomeAlabama.API.Controllers
                 var birdList
                     = await _service.GetBirds(color, secondaryColor, size, shape, habitat);
 
-                return View(birdList);
-            }
-            catch (System.Web.Http.HttpResponseException ex)
-            {
-                _logger.LogError("There was a failure retrieving the bird list with {message}", ex.Message);
+                if (birdList.Count.Equals(0))
+                { 
+                    _logger.LogError("Get request failed to return matching birds.");
 
-                return View("Error");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Get Request failed with message: { message }", ex.Message);
+                    return BadRequest("Matching bird not found.");
+                }
+                else
+                {
+                    return CreatedAtAction(nameof(GetBirds), birdList);
 
-                if (ex.InnerException is not null)
-                    _logger.LogError("Get Request failed with message: { message }", ex.InnerException);
+                }
+            } catch (Exception ex) {
+                {
+                    var message = $"Get method failed with exception {ex}";
+                    _logger.LogError(message, ex);
 
-                return View("Error");
+                    return new Microsoft.AspNetCore.Mvc.StatusCodeResult(StatusCodes.Status500InternalServerError);
+                }
             }
         }
 
-        [HttpPost]
-        public async Task<JsonResult> AddBird(BirdDto bird)
+        [HttpPost("AddBird")]
+        public async Task<ActionResult> AddBird(BirdDto bird)
         {
             if (bird is null) throw new ArgumentNullException(nameof(bird));
 
@@ -69,16 +62,14 @@ namespace TweetHomeAlabama.API.Controllers
             {
                 await Task.Run(() => _service.AddBird(bird));
 
-                return new JsonResult(new { message = "Bird saved successfully" });
+                return Ok();
             }
             catch (Exception ex)
             {
-                if (ex.InnerException is not null)
-                    _logger.LogError("Post Request failed with message: { message }", ex.InnerException.Message);
-                else
-                    _logger.LogError("Post Request failed with message: { message }", ex.Message);
+                var message = $"Post method failed with exception {ex}";
+                _logger.LogError(message, ex);
 
-                throw new System.Web.Http.HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
+                return new Microsoft.AspNetCore.Mvc.StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
 
         }
