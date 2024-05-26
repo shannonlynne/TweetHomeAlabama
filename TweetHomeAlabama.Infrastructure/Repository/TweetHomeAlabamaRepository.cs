@@ -87,9 +87,9 @@ namespace TweetHomeAlabama.Data.Repository
             return null;
         }
 
-        public int Insert(Entity.BirdEntity bird)
+        public async Task<int> Insert(Entity.BirdEntity bird)
         {
-            _context.Birds.Add(bird);
+            await _context.Birds.AddAsync(bird);
             Save();
 
             return bird.Id;
