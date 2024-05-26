@@ -1,9 +1,12 @@
-﻿namespace TweetHomeAlabama.Data.Entity
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TweetHomeAlabama.Data.Entity
 {
     public class BirdTraitsEntity
     {
         #region Properties
         public int Id { get; set; }
+        [ForeignKey("BirdEntity")]
         public int BirdId { get; set; }
         public string Color { get; set; }
         public string SecondaryColor { get; set; }

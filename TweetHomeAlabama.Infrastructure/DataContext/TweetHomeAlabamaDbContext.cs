@@ -40,14 +40,16 @@ namespace TweetHomeAlabama.Data.DataContext
                         bird.Id
                     });
 
-                    entity.Property(x => x.Id).HasColumnName("Id");
-                    entity.Property(x => x.BirdId).HasColumnName("Id");
+                    entity.Property(x => x.Id).HasColumnName("Id").ValueGeneratedOnAdd();
+                    entity.Property(x => x.BirdId).HasColumnName("BirdId");
                     entity.Property(x => x.Color).HasColumnName("Color");
                     entity.Property(x => x.Shape).HasColumnName("Shape");
                     entity.Property(x => x.Habitat).HasColumnName("Habitat");
                     entity.Property(x => x.SecondaryColor).HasColumnName("SecondaryColor");
                     entity.Property(x => x.Size).HasColumnName("Size");
                 });
+
+                modelBuilder.UseIdentityAlwaysColumns();
 
                 base.OnModelCreating(modelBuilder);
             }
