@@ -54,15 +54,16 @@ namespace TweetHomeAlabama.API.Controllers
         }
 
         [HttpPost("AddBird")]
-        public async Task<ActionResult> AddBird(BirdDto bird)
+        public async Task<ActionResult<BirdDto>> AddBird(BirdDto bird)
         {
             if (bird is null) throw new ArgumentNullException(nameof(bird));
 
             try
             {
-                await Task.Run(() => _service.AddBird(bird));
+                var birdId = await _service.AddBird(bird);;
 
-                return Ok();
+                bird.BirdId = birdId;
+                return bird;
             }
             catch (Exception ex)
             {

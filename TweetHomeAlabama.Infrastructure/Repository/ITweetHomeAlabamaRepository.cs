@@ -8,7 +8,7 @@ namespace TweetHomeAlabama.Data.Repository
         Task<List<Entity.BirdEntity>> GetBirdMatches(List<int> ids);
         Task<Entity.BirdEntity?> GetById(int id);
         Task<List<int>> GetIdsUsingTraits(string color, string secondaryColor, string size, string shape, string habitat);
-        int Insert(Entity.BirdEntity bird);
+        Task<int> Insert(Entity.BirdEntity bird);
         void Insert(Entity.BirdTraitsEntity birdTraits);
         void Update(T obj);
         void Delete(int id);
