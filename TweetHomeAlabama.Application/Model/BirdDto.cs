@@ -5,6 +5,7 @@
         public string Name { get; set; } = string.Empty;
         public string Url { get; set; } = string.Empty;
         public string Info { get; set; } = string.Empty;
+        public int BirdId { get; set; }
         public string Color { get; set; } = string.Empty;
         public string SecondaryColor { get; set; } = string.Empty;
         public string Shape { get; set; } = string.Empty;

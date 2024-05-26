@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.CodeDom;
 using TweetHomeAlabama.Data.DataContext;
 
 namespace TweetHomeAlabama.Data.Repository
@@ -20,31 +21,93 @@ namespace TweetHomeAlabama.Data.Repository
             dbSet = _context.Set<BirdEntity>();
         }
 
-        public async Task<List<Entity.BirdEntity>> GetBirds()
+        public async Task<List<Entity.BirdEntity>> GetBirdMatches(List<int> ids)
+        {
+            var birds = new List<Entity.BirdEntity>();
+
+            foreach (var id in ids)
+            {
+                var bird = await GetById(id);
+                if (bird is not null)
+                    birds.Add(bird);
+            }
+
+            return birds;
+        }
+
+        public async Task<List<int>> GetIdsUsingTraits(string color, string secondaryColor, string size, string shape, string habitat)
+        {
+            var birdIds = new List<int>();
+
+            var birdsByColor = await _context.BirdTraits.Where(b => b.Color == color).ToListAsync();
+            var birdsByColor2 = await _context.BirdTraits.Where(b => b.SecondaryColor == secondaryColor).ToListAsync();   
+            var birdsBySize = await _context.BirdTraits.Where(b => b.Size == size).ToListAsync();
+            var birdsByShape = await _context.BirdTraits.Where(b => b.Shape == shape).ToListAsync();
+            var birdsByHabitat = await _context.BirdTraits.Where(b => b.Habitat == habitat).ToListAsync();
+
+            foreach (var bird in birdsByColor)
+                birdIds.Add(bird.BirdId);
+            foreach (var bird in birdsByColor2)
+                birdIds.Add(bird.BirdId);
+            foreach (var bird in birdsBySize)
+                birdIds.Add(bird.BirdId);
+            foreach (var bird in birdsByShape)
+                birdIds.Add(bird.BirdId);
+            foreach (var bird in birdsByHabitat)
+                birdIds.Add(bird.BirdId);
+
+            var result = new List<int>();
+
+            if (birdIds.Count > 0)
+            {
+                var groups = birdIds.GroupBy(b => b);
+                
+                foreach (var group in groups)
+                {
+                    if (group.Count() > 2)
+                        result.Add(group.Key);
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<List<Entity.BirdEntity>> GetAllBirds()   
         {
             var birdList = await _context.Birds.ToListAsync();
 
             return birdList;
         }
 
-        public BirdEntity? GetById(object id)
+        public async Task<Entity.BirdEntity?> GetById(int id)
         {
-            return dbSet.Find(id);
+            var bird = await _context.Birds.FirstOrDefaultAsync(x => x.Id == id);
+            if (bird is not null)
+                return bird;
+            return null;
         }
 
-        public void Insert(BirdEntity obj)
+        public int Insert(Entity.BirdEntity bird)
         {
-            dbSet.Add(obj);
+            _context.Birds.Add(bird);
+            Save();
+
+            return bird.Id;
+        }
+
+        public void Insert(Entity.BirdTraitsEntity birdTraits)
+        {
+            _context.BirdTraits.Add(birdTraits);
             Save();
         }
 
-        public void Update(BirdEntity obj)
+        public void Update(BirdEntity bird)
         {
-            dbSet.Attach(obj);
-            _context.Entry(obj).State = EntityState.Modified;    
+            dbSet.Update(bird);
+            Save();
         }
          
-        public void Delete(object id)
+        public void Delete(int id)
         {
             BirdEntity? existing = dbSet.Find(id);
             if (existing != null)

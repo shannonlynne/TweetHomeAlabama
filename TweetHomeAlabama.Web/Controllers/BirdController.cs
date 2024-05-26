@@ -31,17 +31,10 @@ namespace TweetHomeAlabama.Web.Controllers
             if (size is null) throw new ArgumentNullException(nameof(size));
             if (habitat is null) throw new ArgumentNullException(nameof(habitat));
 
-            var traitList = new List<string>();
-
-            traitList.Add(color);
-            traitList.Add(secondaryColor);
-            traitList.Add(shape);
-            traitList.Add(size);
-            traitList.Add(habitat);
-
             try
             {
-                var birdList = await _service.GetBirds(traitList);
+                var birdList 
+                    = await _service.GetBirds(color, secondaryColor, size, shape, habitat);
 
                 return View(birdList);
             }
