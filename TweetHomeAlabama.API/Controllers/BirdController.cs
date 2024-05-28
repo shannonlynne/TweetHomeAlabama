@@ -56,7 +56,7 @@ namespace TweetHomeAlabama.API.Controllers
 
         [System.Web.Http.Authorize]
         [HttpPost("AddBird")]
-        public async Task<ActionResult> AddBird(BirdDto bird)
+        public async Task<ActionResult<string>> AddBird(BirdDto bird)
         {
             if (bird is null) throw new ArgumentNullException(nameof(bird));
 
@@ -64,7 +64,7 @@ namespace TweetHomeAlabama.API.Controllers
             {
                 var birdId = await _service.AddBird(bird);;
 
-                return new StatusCodeResult(StatusCodes.Status201Created);
+                return CreatedAtAction(nameof(GetBirds), "Bird saved successfully");
             }
             catch (Exception ex)
             {
