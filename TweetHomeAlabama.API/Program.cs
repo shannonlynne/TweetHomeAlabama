@@ -33,6 +33,17 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+app.UseAuthorization();
+
+app.UseCors(options => options.WithOrigins("http://localhost:4200")
+.AllowAnyMethod()
+.AllowAnyHeader());
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseRouting();
 
 app.MapControllers();
 

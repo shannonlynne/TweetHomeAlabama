@@ -18,6 +18,7 @@ namespace TweetHomeAlabama.API.Controllers
             _logger = logger;
         }
 
+        [System.Web.Http.Authorize]
         [HttpGet("GetBirds")]
         public async Task<ActionResult<Bird>> GetBirds(string color, string secondaryColor, string shape, string size, string habitat)
         {
@@ -53,6 +54,7 @@ namespace TweetHomeAlabama.API.Controllers
             }
         }
 
+        [System.Web.Http.Authorize]
         [HttpPost("AddBird")]
         public async Task<ActionResult> AddBird(BirdDto bird)
         {
