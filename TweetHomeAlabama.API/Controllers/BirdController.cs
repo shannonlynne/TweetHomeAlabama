@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using TweetHomeAlabama.Application.Model;
 using TweetHomeAlabama.Application.Service;
 using TweetHomeAlabama.Domain.Model;
@@ -64,7 +65,7 @@ namespace TweetHomeAlabama.API.Controllers
             {
                 var birdId = await _service.AddBird(bird);;
 
-                return CreatedAtAction(nameof(GetBirds), "Bird saved successfully");
+                return CreatedAtAction(nameof(GetBirds), JsonSerializer.Serialize("Bird saved successfully"));
             }
             catch (Exception ex)
             {
