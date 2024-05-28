@@ -21,7 +21,7 @@ namespace TweetHomeAlabama.API.Controllers
 
         [System.Web.Http.Authorize]
         [HttpGet("GetBirds")]
-        public async Task<ActionResult<Bird>> GetBirds(string color, string secondaryColor, string shape, string size, string habitat)
+        public async Task<ActionResult<List<Bird>>> GetBirds(string color, string secondaryColor, string shape, string size, string habitat)
         {
             if (color is null) throw new ArgumentNullException(nameof(color));
             if (secondaryColor is null) throw new ArgumentNullException(nameof(secondaryColor));
@@ -34,7 +34,7 @@ namespace TweetHomeAlabama.API.Controllers
                 var birdList
                     = await _service.GetBirds(color, secondaryColor, size, shape, habitat);
 
-                if (birdList.Count.Equals(0))
+                if (birdList is null || birdList.Count.Equals(0))
                 { 
                     _logger.LogError("Get request failed to return matching birds.");
 
@@ -49,7 +49,7 @@ namespace TweetHomeAlabama.API.Controllers
                 {
                     var message = $"Get method failed with exception {ex}";
                     _logger.LogError(message, ex);
-
+                    
                     return new StatusCodeResult(StatusCodes.Status500InternalServerError);
                 }
             }
