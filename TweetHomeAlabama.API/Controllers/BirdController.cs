@@ -31,8 +31,8 @@ namespace TweetHomeAlabama.API.Controllers
 
             try
             {
-                var birdList
-                    = await _service.GetBirds(color, secondaryColor, size, shape, habitat);
+                var birdList = new List<Bird>();    
+                birdList = await _service.GetBirds(color, secondaryColor, size, shape, habitat);
 
                 if (birdList is null || birdList.Count.Equals(0))
                 { 
