@@ -57,9 +57,7 @@ namespace TweetHomeAlabama.UnitTests
             var actualResult = await controller.GetBirds("red", "blue", "small", "long", "wherever");
 
             //Assert
-            Assert.AreEqual(expectedResult, (actualResult.Result as CreatedAtActionResult)?.Value);
-
-            
+            Assert.AreEqual(expectedResult, (actualResult.Result as CreatedAtActionResult)?.Value);          
         }
 
         //test repo layer - integration tests?
